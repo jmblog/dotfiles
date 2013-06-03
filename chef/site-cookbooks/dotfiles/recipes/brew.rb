@@ -10,6 +10,4 @@ node["brew"]["packages"].each{|pkg|
   package pkg do
     action :install
   end
-
-  homebrew_package pkg
 }
