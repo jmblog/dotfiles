@@ -19,7 +19,6 @@
   "brew": {
     "packages": [
       "coreutils",
-      "git",
       "ack",
       "bash-completion",
       "tree",
