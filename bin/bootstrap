@@ -1,8 +1,6 @@
 #!/bin/bash
 
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
-DOTFILES_TARBALL_PATH="https://github.com/jmblog/dotfiles/tarball/master"
-DOTFILES_GIT_REMOTE="https://github.com/jmblog/dotfiles"
 
 # Logging stuff
 function e_header()   { echo -e "\n\033[1m$@\033[0m"; }
@@ -37,22 +35,84 @@ if [[ ! $(type -P git) ]]; then
   brew install git
 fi
 
-# Step 1
+
+# Step 1: Initialize
 # ----------------------------------------------------------------------
 
-if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
-    mkdir ${DOTFILES_DIRECTORY}
+#if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
+#  e_header "Downloading dotfiles..."
+#  git clone --recursive git@github.com:jmblog/dotfiles.git ${DOTFILES_DIRECTORY}
+#  cd ${DOTFILES_DIRECTORY}
+#else
+#  e_header "Updating dotfiles..."
+#  cd ${DOTFILES_DIRECTORY}
+#  git pull
+#  git submodule update --init --recursive --quiet
+#fi
+
+# Utilities
+source ./lib/utils
+
+
+# Step 2: Setup Chef
+# ----------------------------------------------------------------------
+
+# Check for rbenv
+pkgs=(rbenv ruby-build)
+for pkg in ${pkgs[@]}
+do
+  if ! formula_exists $pkg; then
+    e_header "Installing ${pkg}..."
+    brew install $pkg
+  fi
+done
+
+# rbenv init
+eval "$(rbenv init -)"
+
+# Install Ruby
+versions=(1.9.3-p429)
+list="$(to_install "${versions[*]}" "$(rbenv whence ruby)")"
+if [[ "$list" ]]; then
+  e_header "Installing Ruby versions: $list"
+  for version in $list
+  do
+    rbenv install "$version"
+  done
+  [[ "$(echo "$list" | grep -w "${versions[0]}")" ]]
+  rbenv global "${versions[0]}"
+  rbenv shell "${versions[0]}"
+  rbenv rehash
 fi
 
-cd ${DOTFILES_DIRECTORY}
+# Update rubygem
+e_header "Updating RubyGems..."
+gem update --system
+rbenv rehash
 
-# Initialize the git repo if it's missing
-if [[ ! i$(git rev-parse --is-inside-work-tree &> /dev/null) ]]; then
-  e_header "Initializing git repository..."
-  git init
-  git remote add origin ${DOTFILES_GIT_REMOTE}
-  git fetch origin master
-  git reset --hard FETCH_HEAD
-  git clean -fd
+# Install Bundler
+if ! type_exists 'bundle'; then
+  e_header "Installing Bundler..."
+  gem install bundler
 fi
 
+# Install ruby gems (included Chef) 
+e_header "Installing ruby gems with Bundler..."
+bundle install
+rbenv rehash
+sudo chown -R $USER /tmp/chef-solo
+
+# Install and update third-party cookbooks
+e_header "Installing Chef's third-party cookbooks with Berkshelf..."
+cd chef
+bundle exec berks --path cookbooks
+cd ..
+
+
+# Step 3: Install and Update Homebrew packages
+# ----------------------------------------------------------------------
+e_header "Installing and updating Homebrew packages..."
+chef-solo -c chef/solo.rb -j chef/nodes/localhost.json
+
+
+e_header "All done!"
