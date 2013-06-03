@@ -1,0 +1,35 @@
+{
+  "run_list": [
+    "recipe[homebrew]",
+    "recipe[dotfiles]",
+    "recipe[brew]"
+  ],
+  
+  "dotfiles": {
+    "links": { 
+      "bash/bashrc":       ".bashrc",
+      "bash/bash_profile": ".bash_profile",
+      "git/gitattributes": ".gitattributes",
+      "git/gitconfig":     ".gitconfig",
+      "git/gitignore":     ".gitignore",
+      "vim":               ".vim"
+      "vim/vimrc":         ".vimrc"
+    }
+  },
+
+  "brew": {
+    "packages": [
+      "coreutils",
+      "git",
+      "ack",
+      "bash-completion",
+      "tree",
+      "wget",
+      "colordiff",
+      "plenv",
+      "cpanm"
+    ]
+  },
+
+  "dotfiles_dir": ".dotfiles"
+}
