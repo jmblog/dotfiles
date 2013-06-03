@@ -1,8 +1,7 @@
 {
   "run_list": [
     "recipe[homebrew]",
-    "recipe[dotfiles]",
-    "recipe[brew]"
+    "recipe[dotfiles::brew]"
   ],
   
   "dotfiles": {
@@ -12,7 +11,7 @@
       "git/gitattributes": ".gitattributes",
       "git/gitconfig":     ".gitconfig",
       "git/gitignore":     ".gitignore",
-      "vim":               ".vim"
+      "vim":               ".vim",
       "vim/vimrc":         ".vimrc"
     }
   },
