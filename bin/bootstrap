@@ -9,7 +9,13 @@ function e_error()    { echo -e " \033[1;31m✖\033[0m  $@"; }
 function e_warning()  { echo -e " \033[1;31m!\033[0m  $@"; }
 function e_arrow()    { echo -e " \033[1;33m➜\033[0m  $@"; }
 
-# Step 0
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `bootstrap` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Step 0: Preparation
 # ----------------------------------------------------------------------
 
 # Check for gcc
@@ -90,29 +96,40 @@ e_header "Updating RubyGems..."
 gem update --system
 rbenv rehash
 
-# Install Bundler
 if ! type_exists 'bundle'; then
+  # Install Bundler
   e_header "Installing Bundler..."
   gem install bundler
 fi
-
-# Install ruby gems (included Chef) 
-e_header "Installing ruby gems with Bundler..."
-bundle install
+ 
+# Install gems (included Chef) 
+e_header "Installing and updating gems with Bundler..."
+bundle update
 rbenv rehash
 sudo chown -R $USER /tmp/chef-solo
 
 # Install and update third-party cookbooks
-e_header "Installing Chef's third-party cookbooks with Berkshelf..."
-cd chef
+e_header "Installing and updating Chef's third-party cookbooks with Berkshelf..."
+cd chef-repo
 bundle exec berks --path cookbooks
 cd ..
 
 
-# Step 3: Install and Update Homebrew packages
+# Step 3: Main Stuff
 # ----------------------------------------------------------------------
-e_header "Installing and updating Homebrew packages..."
-chef-solo -c chef/solo.rb -j chef/nodes/localhost.json
+e_header "Setup development environment..."
+chef-solo -c chef-repo/solo.rb -j chef-repo/nodes/localhost.json
 
+
+# Step 4: OS X Settings
+# ----------------------------------------------------------------------
+seek_confirmation "Warning: This step may modify your OS X system defaults."
+
+if is_confirmed; then
+  bash ./bin/osxdefaults
+  e_success "OS X settings updated! You may need to restart."
+else
+  printf "Skipped OS X settings update.\n"
+fi
 
 e_header "All done!"
