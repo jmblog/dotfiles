@@ -95,3 +95,4 @@ Inspriration and code was taken from:
 
 * @necolas (Nicolas Gallagher) https://github.com/necolas/dotfiles
 * @cowboy (Ben Alman) https://github.com/cowboy/dotfiles
+* @mathiasbynens (Mathias Bynens) https://github.com/mathiasbynens/dotfiles
