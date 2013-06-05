@@ -14,12 +14,15 @@
       "colordiff"
     ]
   },
-  
+
+  "copies": {
+    "git/gitconfig":     ".gitconfig"
+  },
+   
   "links": { 
     "bash/bashrc":       ".bashrc",
     "bash/bash_profile": ".bash_profile",
     "git/gitattributes": ".gitattributes",
-    "git/gitconfig":     ".gitconfig",
     "git/gitignore":     ".gitignore",
     "vim":               ".vim",
     "vim/vimrc":         ".vimrc"
@@ -37,13 +40,5 @@
       "uglify-js": "uglifyjs",
       "yo":        "yo"
     }
-  },
-
-  "perl": {
-    "versions": [
-      "perl-5.18.0"
-    ],
-    "use": "perl-5.18.0"
   }
-
 }

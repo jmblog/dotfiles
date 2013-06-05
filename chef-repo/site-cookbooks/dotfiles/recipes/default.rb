@@ -5,12 +5,21 @@
 # Copyright 2013, Yoshihide Jimbo
 #
 
-# Symlinks
+# Mirror dotfiles
 #-------------------------------------------------------
 
-home_dir = ENV['HOME'] + '/Desktop/tmp'
+home_dir = ENV['HOME']# + '/Desktop/tmp'
 dotfiles_dir = File.expand_path(File.dirname(__FILE__) + '../../../../..')
 
+node["copies"].each{|source, dest|
+  from = dotfiles_dir + '/' + source
+  to   = home_dir + '/' + dest
+  execute "copy #{source} to #{dest}" do
+    command "cp -rf #{from} #{to}"
+    only_if {File.exists?(from)}
+  end
+}
+ 
 node["links"].each{|source, dest|
   link dest do
     target_file home_dir + '/' + dest
@@ -18,7 +27,7 @@ node["links"].each{|source, dest|
   end
 }
 
-execute "Reload ~/.bash_profile" do
+execute "source ~/.bash_profile" do
   command "source ~/.bash_profile"
 end
 
@@ -74,41 +83,6 @@ node["nodejs"]["packages"].each{|pkg, cmd|
     not_if "type -P #{cmd}"
   end 
 }
-
-
-# Perl
-#-------------------------------------------------------
-
-# Install perlbrew if missing
-execute "Install perlbrew" do
-  command "curl -L http://install.perlbrew.pl | bash"
-  not_if "type -P perlbrew"
-end
-
-# Update perlbrew
-execute "Update perlbrew" do
-  command "perlbrew self-upgrade"
-  only_if "type -P nodebrew"
-end
-
-# Install Perl
-node["perl"]["versions"].each{|version|
-  execute "Install Perl #{version}" do
-    command "perlbrew install #{version}" 
-    not_if "perlbrew list | grep #{version}"
-  end
-}
-
-# Use <version>
-execute "Use Perl <version>" do
-  command "perlbrew switch " + node["perl"]["use"]
-end
-
-# Install cpanm
-execute "Install cpanm" do
-  command "perlbrew install-cpanm"
-  not_if "type -P cpanm"
-end
 
 
 # OS X Applications 
