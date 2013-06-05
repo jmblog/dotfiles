@@ -58,22 +58,57 @@ end
 node["nodejs"]["versions"].each{|version|
   execute "Install Node.js #{version}" do
     command "nodebrew install #{version}"
-    not_if "nodebrew ls | grep #{version}"
+    not_if "nodebrew list | grep #{version}"
   end
 }
 
 # Use <version>
-execute "Use <version>" do
+execute "Use Node.js <version>" do
   command "nodebrew use " + node["nodejs"]["use"]
 end
 
 # Install Node packages
 node["nodejs"]["packages"].each{|pkg, cmd|
-  execute "install #{pkg}" do
+  execute "npm install #{pkg}" do
     command "npm install #{pkg} -g"
     not_if "type -P #{cmd}"
   end 
 }
+
+
+# Perl
+#-------------------------------------------------------
+
+# Install perlbrew if missing
+execute "Install perlbrew" do
+  command "curl -L http://install.perlbrew.pl | bash"
+  not_if "type -P perlbrew"
+end
+
+# Update perlbrew
+execute "Update perlbrew" do
+  command "perlbrew self-upgrade"
+  only_if "type -P nodebrew"
+end
+
+# Install Perl
+node["perl"]["versions"].each{|version|
+  execute "Install Perl #{version}" do
+    command "perlbrew install #{version}" 
+    not_if "perlbrew list | grep #{version}"
+  end
+}
+
+# Use <version>
+execute "Use Perl <version>" do
+  command "perlbrew switch " + node["perl"]["use"]
+end
+
+# Install cpanm
+execute "Install cpanm" do
+  command "perlbrew install-cpanm"
+  not_if "type -P cpanm"
+end
 
 
 # OS X Applications 

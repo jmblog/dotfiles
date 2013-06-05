@@ -11,9 +11,7 @@
       "bash-completion",
       "tree",
       "wget",
-      "colordiff",
-      "plenv",
-      "cpanm"
+      "colordiff"
     ]
   },
   
@@ -39,6 +37,13 @@
       "uglify-js": "uglifyjs",
       "yo":        "yo"
     }
+  },
+
+  "perl": {
+    "versions": [
+      "perl-5.18.0"
+    ],
+    "use": "perl-5.18.0"
   }
 
 }
