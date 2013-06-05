@@ -1,21 +1,9 @@
 {
   "run_list": [
     "recipe[homebrew]",
-    "recipe[dotfiles::brew]"
+    "recipe[dotfiles]"
   ],
   
-  "dotfiles": {
-    "links": { 
-      "bash/bashrc":       ".bashrc",
-      "bash/bash_profile": ".bash_profile",
-      "git/gitattributes": ".gitattributes",
-      "git/gitconfig":     ".gitconfig",
-      "git/gitignore":     ".gitignore",
-      "vim":               ".vim",
-      "vim/vimrc":         ".vimrc"
-    }
-  },
-
   "brew": {
     "packages": [
       "coreutils",
@@ -28,6 +16,29 @@
       "cpanm"
     ]
   },
+  
+  "links": { 
+    "bash/bashrc":       ".bashrc",
+    "bash/bash_profile": ".bash_profile",
+    "git/gitattributes": ".gitattributes",
+    "git/gitconfig":     ".gitconfig",
+    "git/gitignore":     ".gitignore",
+    "vim":               ".vim",
+    "vim/vimrc":         ".vimrc"
+  },
 
-  "dotfiles_dir": ".dotfiles"
+  "nodejs": {
+    "versions": [
+      "v0.10.10"
+    ],
+    "use": "v0.10.10",
+    "packages": {
+      "bower":     "bower",
+      "grunt-cli": "grunt",
+      "jshint":    "jshint",
+      "uglify-js": "uglifyjs",
+      "yo":        "yo"
+    }
+  }
+
 }

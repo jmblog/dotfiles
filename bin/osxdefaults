@@ -1,0 +1,99 @@
+#!/bin/bash
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `osxdefaults` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+
+# General UI/UX
+# ----------------------------------------------------------------------
+
+# Set computer name (as done via System Preferences → Sharing)
+sudo scutil --set ComputerName "yojimbo"
+sudo scutil --set HostName "yojimbo"
+sudo scutil --set LocalHostName "yojimbo"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "yojimbo"
+
+# Menu bar: disable transparency
+defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
+
+# Check for software updates daily, not just once per week
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+
+# Trackpad, mouse, keyboard, Bluetooth accessories, and input 
+# ----------------------------------------------------------------------
+
+# Trackpad: enable tap to click for this user and for the login screen
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+
+# Finder
+# ----------------------------------------------------------------------
+
+# Avoid creating .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
+
+# Dock, Dashboard, and hot corners
+# ----------------------------------------------------------------------
+
+# Dock: position the Dock on the bottom
+defaults write com.apple.dock orientation bottom
+
+# Dock: set the icon size of Dock items to 32 pixels
+defaults write com.apple.dock tilesize -int 32
+
+# Add iOS Simulator to Launchpad
+ln -s /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app /Applications/iOS\ Simulator.apple
+
+# Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+# Top left screen corner → Mission Control
+defaults write com.apple.dock wvous-tl-corner -int 2
+defaults write com.apple.dock wvous-tl-modifier -int 0
+# Bottom right screen corner → Desktop
+defaults write com.apple.dock wvous-br-corner -int 4
+defaults write com.apple.dock wvous-br-modifier -int 0
+# Bottom left screen corner →Show application windows
+defaults write com.apple.dock wvous-bl-corner -int 3
+defaults write com.apple.dock wvous-bl-modifier -int 0
+
+
+# Safari & Webkit
+# ----------------------------------------------------------------------
+
+# Enable Safari’s debug menu
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+
+# Enable the Develop menu and the Web Inspector in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+
+
+# Kill affected applications
+# ----------------------------------------------------------------------
+
+for app in "Dashboard" "Dock" "Finder" "SystemUIServer"; do
+    killall "$app" > /dev/null 2>&1
+done
+
+open /Applications/TotalFinder.app
