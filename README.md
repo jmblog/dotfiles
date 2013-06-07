@@ -28,35 +28,35 @@ You should run the update when:
 
 ## Features
 
-### Mirror dotfiles
+### ✈ Mirror dotfiles
 
 Some dotfiles are symlinked, and some are copied. See `links` and `copies` attributes in [chef-repo/nodes/localhost.json](https://github.com/jmblog/dotfiles/blob/master/chef-repo/nodes/localhost.json). 
 
-### Install and update Homebrew packages
+### ✈ Install and update Homebrew packages
 
 The homebrew packages that will be installed and updated are listed in `brew -> packages` attribute in [chef-repo/nodes/localhost.json](https://github.com/jmblog/dotfiles/blob/master/chef-repo/nodes/localhost.json).
 
-### Install the specific version's Ruby
+### ✈ Install the specific version's Ruby
 
 The list of versions is defined in [bin/bootstrap](https://github.com/jmblog/dotfiles/blob/master/bin/bootstrap).
 
-### Install and update Ruby gems
+### ✈ Install and update Ruby gems
 
 See [Gemfile](https://github.com/jmblog/dotfiles/blob/master/Gemfile).
 
-### Install the specific version's Node.js
+### ✈ Install the specific version's Node.js
 
 The list of versions is defined in `nodejs -> versions` and `nodejs -> use` attributes in [chef-repo/nodes/localhost.json](https://github.com/jmblog/dotfiles/blob/master/chef-repo/nodes/localhost.json)
 
-### Install and update Node.js packages (globally)
+### ✈ Install and update Node.js packages (globally)
 
 The Node.js packages that will be installed and update are listed in `nodejs -> pakcages` attribute in [chef-repo/nodes/localhost.json](https://github.com/jmblog/dotfiles/blob/master/chef-repo/nodes/localhost.json).
 
-### Install OS X applications
+### ✈ Install OS X applications
 
 The installed apps are listed in [chef-repo/site-cookbooks/dotfiles/recipes/default.rb](https://github.com/jmblog/dotfiles/blob/master/chef-repo/site-cookbooks/dotfiles/recipes/default.rb).
 
-### Set Custom OS X defaults
+### ✈ Set Custom OS X defaults
 
 Custom OS X settings can be applied by running the following command:
 
