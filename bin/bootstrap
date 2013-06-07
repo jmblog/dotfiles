@@ -15,6 +15,7 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `bootstrap` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+
 # Step 0: Preparation
 # ----------------------------------------------------------------------
 
@@ -42,7 +43,7 @@ if [[ ! $(type -P git) ]]; then
 fi
 
 
-# Step 1: Initialize
+# Step 1: Initialization
 # ----------------------------------------------------------------------
 
 #if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
