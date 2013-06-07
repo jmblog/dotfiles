@@ -68,6 +68,8 @@ $ ~/.dotfiles/bin/osxdefaults
 
 I use a custom bash prompt by @necolas. (I use @chriskempson's [Tomorrow Theme](https://github.com/chriskempson/tomorrow-theme) rather than Solarized.)
 
+![Screenshot](http://farm3.staticflickr.com/2881/8975352568_4e63245e33_o.png)
+
 ## Thanks to
 
 Inspriration and code was taken from:
