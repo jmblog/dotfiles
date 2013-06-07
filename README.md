@@ -68,7 +68,7 @@ $ ~/.dotfiles/bin/osxdefaults
 
 I use a custom bash prompt by @necolas. (I use @chriskempson's [Tomorrow Theme](https://github.com/chriskempson/tomorrow-theme) rather than Solarized.)
 
-![Screenshot](http://farm3.staticflickr.com/2881/8975352568_7e5173078a_o.png)
+![Screenshot](http://farm3.staticflickr.com/2881/8975352568_0d291cb886_o.png)
 
 ## Thanks to
 
