@@ -38,7 +38,7 @@ The homebrew packages that will be installed and updated are listed in `brew -> 
 
 ### Install the specific version's Ruby
 
-The list of versions is defined in [bin/bootstrap](https://github.com/jmblog/dotfiles/blob/master/bin/boostrap).
+The list of versions is defined in [bin/bootstrap](https://github.com/jmblog/dotfiles/blob/master/bin/bootstrap).
 
 ### Install and update Ruby gems
 
