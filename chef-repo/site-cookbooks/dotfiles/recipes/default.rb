@@ -8,7 +8,7 @@
 # Mirror dotfiles
 #-------------------------------------------------------
 
-home_dir = ENV['HOME']# + '/Desktop/tmp'
+home_dir = ENV['HOME']
 dotfiles_dir = File.expand_path(File.dirname(__FILE__) + '../../../../..')
 
 node["copies"].each{|source, dest|
@@ -100,13 +100,6 @@ dmg_package "Google Chrome Canary" do
   source "https://storage.googleapis.com/chrome-canary/GoogleChromeCanary.dmg"
   action :install
 end
-
-#dmg_package "GoogleJapaneseInput" do
-#  volumes_dir "GoogleJapaneseInput"
-#  source "http://dl.google.com/japanese-ime/latest/GoogleJapaneseInput.dmg"
-#  type "pkg"
-#  action :install
-#end
 
 dmg_package "TotalFinder" do
   source "http://downloads.binaryage.com/TotalFinder-1.4.9.dmg"
