@@ -4,92 +4,71 @@ My OS X dotfiles.
 
 ## How to install
 
-The installation step requires the [XCode Command Line Tools](https://developer.apple.com/downloads) and may overwrite existing dotfiles in your HOME and `.vim` directories.
-
 ```bash
-$ bash -c "$(curl -fsSL raw.github.com/jmblog/dotfiles/master/bin/dotfiles)"
+$ bash -c "$(curl -fsSL raw.github.com/jmblog/dotfiles/master/bin/bootstrap)"
 ```
+
+Note:
+
+* You need to have installed the [XCode Command Line Tools](https://developer.apple.com/downloads).
+
+* Existing dotfiles in your HOME and `.vim` directories may be overwritten.
 
 ## How to update
 
-You should run the update when:
-
-* You make a change to `~/.dotfiles/git/gitconfig` (the only file that is
-  copied rather than symlinked).
-* You want to pull changes from the remote repository.
-* You want to update Homebrew formulae and Node packages.
-
-Run the dotfiles command:
-
 ```bash
-$ dotfiles
+$ ~/.dotfiles/bin/bootstrap
 ```
 
-Options:
+You should run the update when:
 
-<table>
-    <tr>
-        <td><code>-h</code>, <code>--help</code></td>
-        <td>Help</td>
-    </tr>
-    <tr>
-        <td><code>-l</code>, <code>--list</code></td>
-        <td>List of additional applications to install</td>
-    </tr>
-    <tr>
-        <td><code>--no-packages</code></td>
-        <td>Suppress package updates</td>
-    </tr>
-    <tr>
-        <td><code>--no-sync</code></td>
-        <td>Suppress pulling from the remote repository</td>
-    </tr>
-</table>
-
+* You want to update Homebrew formulae, Ruby gems and Node packages.
+* You want to pull changes from the remote repository.
+* You make a change to `~/.dotfiles/git/gitconfig` (the only file that is copied rather than symlinked).
 
 ## Features
 
-### Automatic software installation
+### Mirror dotfiles
 
-#### Homebrew formulae
+Some dotfiles are symlinked, and some are copied. See `links` and `copies` attributes in [chef-repo/nodes/localhost.json](https://github.com/jmblog/dotfiles/blob/master/chef-repo/nodes/localhost.json). 
 
-#### Node and Node packages
+### Install and update Homebrew packages
 
-#### Ruby and Ruby Gems
+The homebrew packages that will be installed and updated are listed in `brew -> packages` attribute in [chef-repo/nodes/localhost.json](https://github.com/jmblog/dotfiles/blob/master/chef-repo/nodes/localhost.json).
 
+### Install the specific version's Ruby
 
+The list of versions is defined in [bin/bootstrap](https://github.com/jmblog/dotfiles/blob/master/bin/boostrap).
 
+### Install and update Ruby gems
 
-### Custom OS X defaults
+See [Gemfile](https://github.com/jmblog/dotfiles/blob/master/Gemfile).
 
-Custom OS X settings can be applied during the `dotfiles` process. They can
-also be applied independently by running the following command:
+### Install the specific version's Node.js
+
+The list of versions is defined in `nodejs -> versions` and `nodejs -> use` attributes in [chef-repo/nodes/localhost.json](https://github.com/jmblog/dotfiles/blob/master/chef-repo/nodes/localhost.json)
+
+### Install and update Node.js packages (globally)
+
+The Node.js packages that will be installed and update are listed in `nodejs -> pakcages` attribute in [chef-repo/nodes/localhost.json](https://github.com/jmblog/dotfiles/blob/master/chef-repo/nodes/localhost.json).
+
+### Install OS X applications
+
+The installed apps are listed in [chef-repo/site-cookbooks/dotfiles/recipes/default.rb](https://github.com/jmblog/dotfiles/blob/master/chef-repo/site-cookbooks/dotfiles/recipes/default.rb).
+
+### Set Custom OS X defaults
+
+Custom OS X settings can be applied by running the following command:
 
 ```bash
-$ osxdefaults
+$ ~/.dotfiles/bin/osxdefaults
 ```
 
-### Bootable backup-drive script
+## Custom bash prompt
 
-These dotfiles include a script that will incrementally back up your data to an
-external, bootable clone of your computer's internal drive. First, make sure
-that the value of `DST` in the `bin/backup` script matches the name of your
-backup-drive. Then run the following command:
+I use a custom bash prompt by @necolas. (I use @chriskempson's [Tomorrow Theme](https://github.com/chriskempson/tomorrow-theme) rather than Solarized.)
 
-```bash
-$ backup
-```
-
-For more information on how to setup your backup-drive, please read the
-preparatory steps in this post on creating a [Mac OS X bootable backup
-drive](http://nicolasgallagher.com/mac-osx-bootable-backup-drive-with-rsync/).
-
-### Custom bash prompt
-
-
-## Structure
-
-## Acknowledgements
+## Thanks to
 
 Inspriration and code was taken from:
 
