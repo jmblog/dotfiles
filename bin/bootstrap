@@ -46,18 +46,16 @@ fi
 # Step 1: Initialization
 # ----------------------------------------------------------------------
 
-#if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
-#  e_header "Downloading dotfiles..."
-#  git clone --recursive git@github.com:jmblog/dotfiles.git ${DOTFILES_DIRECTORY}
-#  cd ${DOTFILES_DIRECTORY}
-#else
-#  e_header "Updating dotfiles..."
-#  cd ${DOTFILES_DIRECTORY}
-#  git pull
-#  git submodule update --init --recursive --quiet
-#fi
-
-cd ${DOTFILES_DIRECTORY}
+if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
+  e_header "Downloading dotfiles..."
+  git clone --recursive git@github.com:jmblog/dotfiles.git ${DOTFILES_DIRECTORY}
+  cd ${DOTFILES_DIRECTORY}
+else
+  e_header "Updating dotfiles..."
+  cd ${DOTFILES_DIRECTORY}
+  git pull
+  git submodule update --init --recursive --quiet
+fi
 
 # Utilities
 source ./lib/utils
