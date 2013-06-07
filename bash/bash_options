@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell

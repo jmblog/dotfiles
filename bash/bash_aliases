@@ -1,0 +1,5 @@
+#!/bin/bash
+
+alias ls="ls --color=auto"
+alias ll="ls -la"
+alias tree='tree -F --dirsfirst -C'

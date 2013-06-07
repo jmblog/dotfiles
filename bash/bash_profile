@@ -1,0 +1,29 @@
+#!/bin/bash
+
+files=(
+  $HOME/.dotfiles/bash/bash_options # Options
+  $HOME/.dotfiles/bash/bash_exports # Exports
+  $HOME/.dotfiles/bash/bash_aliases # Aliases
+  $HOME/.dotfiles/bash/functions/*  # Functions
+  $HOME/.dotfiles/bash/bash_prompt  # Custom bash prompt
+  $HOME/.bash_profile.local         # Local and private settings not under version control (e.g. git credentials)
+  $HOME/.dotfiles/bash/bash_paths   # Path modifications (must source after `.bash_profile.local` in case of custom `brew` location)
+)
+
+# If these files are readable, source them
+for i in ${!files[*]}
+do
+  if [[ -r ${files[$i]} ]]; then
+    source ${files[$i]}
+  fi
+done
+
+unset files
+
+# Init rbenv
+eval "$(rbenv init -)"
+
+# Source Bash completion (installed via Homebrew)
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
