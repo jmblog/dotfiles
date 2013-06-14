@@ -89,6 +89,13 @@ defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool 
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
 
 
+# Misc
+# ----------------------------------------------------------------------
+
+# Add PhotoStreamAgent to the login item so that syncing photos always from iCloud to my mac
+osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/iPhoto.app/Contents/Library/LoginItems/PhotoStreamAgent.app", hidden:false, name:"PhotoStreamAgent"}'
+
+
 # Kill affected applications
 # ----------------------------------------------------------------------
 
