@@ -11,7 +11,8 @@
       "bash-completion",
       "tree",
       "wget",
-      "colordiff"
+      "colordiff",
+      "phantomjs"
     ]
   },
 
@@ -38,7 +39,8 @@
       "grunt-cli": "grunt",
       "jshint":    "jshint",
       "uglify-js": "uglifyjs",
-      "yo":        "yo"
+      "yo":        "yo",
+      "mocha":     "mocha"
     }
   }
 }
