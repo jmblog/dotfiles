@@ -34,14 +34,14 @@
       "v0.10.10"
     ],
     "use": "v0.10.10",
-    "packages": {
-      "bower":     "bower",
-      "grunt-cli": "grunt",
-      "grunt-init": "grunt-init",
-      "jshint":    "jshint",
-      "uglify-js": "uglifyjs",
-      "yo":        "yo",
-      "mocha":     "mocha"
-    }
+    "packages": [
+      { "pkg": "bower",      "cmd": "bower"},
+      { "pkg": "grunt-cli",  "cmd": "grunt"},
+      { "pkg": "grunt-init", "cmd": "grunt-init"},
+      { "pkg": "jshint",     "cmd": "jshint"},
+      { "pkg": "uglify-js",  "cmd": "uglifyjs"},
+      { "pkg": "yo",         "cmd": "yo"},
+      { "pkg": "mocha",      "cmd": "mocha"}
+    ]
   }
 }

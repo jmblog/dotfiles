@@ -77,10 +77,10 @@ execute "Use Node.js <version>" do
 end
 
 # Install Node packages
-node["nodejs"]["packages"].each{|pkg, cmd|
-  execute "npm install #{pkg}" do
-    command "npm install #{pkg} -g"
-    not_if "type -P #{cmd}"
+node["nodejs"]["packages"].each{|obj|
+  execute "npm install #{obj.pkg}" do
+    command "npm install #{obj.pkg} -g"
+    not_if "type -P #{obj.cmd}"
   end 
 }
 
