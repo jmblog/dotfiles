@@ -37,6 +37,7 @@
     "packages": {
       "bower":     "bower",
       "grunt-cli": "grunt",
+      "grunt-init": "grunt-init",
       "jshint":    "jshint",
       "uglify-js": "uglifyjs",
       "yo":        "yo",
