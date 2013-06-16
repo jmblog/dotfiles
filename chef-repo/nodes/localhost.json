@@ -43,5 +43,9 @@
       { "pkg": "yo",         "cmd": "yo"},
       { "pkg": "mocha",      "cmd": "mocha"}
     ]
-  }
+  },
+
+  "gitrepos": [
+    { "local": "~/.grunt-init/node", "remote": "git@github.com:gruntjs/grunt-init-node.git" }
+  ]
 }

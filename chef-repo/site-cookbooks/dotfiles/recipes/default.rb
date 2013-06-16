@@ -85,6 +85,22 @@ node["nodejs"]["packages"].each{|obj|
 }
 
 
+# Git repos
+#-------------------------------------------------------
+
+node["gitrepos"].each{|obj|
+  execute "Update git repository: #{obj.local}" do
+    command "cd #{obj.local}; git pull; git submodule update --init --recursive --quiet"
+    only_if do File.directory?(File.expand_path(obj.local)) end
+  end
+  
+  execute "Clone git repository: #{obj.remote} #{obj.local}" do
+    command "git clone --recursive #{obj.remote} #{obj.local}"
+    not_if do File.directory?(File.expand_path(obj.local)) end
+  end
+}
+
+
 # OS X Applications 
 #-------------------------------------------------------
 
