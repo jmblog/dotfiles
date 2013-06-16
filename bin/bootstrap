@@ -119,7 +119,8 @@ cd ..
 # Step 3: Main Stuff
 # ----------------------------------------------------------------------
 e_header "Setup development environment..."
-chef-solo -c chef-repo/solo.rb -j chef-repo/nodes/localhost.json
+chef_cmd='chef-solo -c chef-repo/solo.rb -j chef-repo/nodes/localhost.json'
+printf "${chef_cmd}\n" && ${chef_cmd}
 
 
 # Step 4: OS X Settings
