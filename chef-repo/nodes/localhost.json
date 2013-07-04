@@ -12,7 +12,8 @@
       "tree",
       "wget",
       "colordiff",
-      "phantomjs"
+      "phantomjs",
+      "rmtrash"
     ]
   },
 
@@ -31,9 +32,9 @@
 
   "nodejs": {
     "versions": [
-      "v0.10.10"
+      "v0.10.12"
     ],
-    "use": "v0.10.10",
+    "use": "v0.10.12",
     "packages": [
       { "pkg": "bower",      "cmd": "bower"},
       { "pkg": "grunt-cli",  "cmd": "grunt"},
@@ -46,6 +47,7 @@
   },
 
   "gitrepos": [
-    { "local": "~/.grunt-init/node", "remote": "git@github.com:gruntjs/grunt-init-node.git" }
+    { "local": "~/.grunt-init/node", "remote": "git@github.com:gruntjs/grunt-init-node.git" },
+    { "local": "~/.grunt-init/gruntplugin", "remote": "https://github.com/gruntjs/grunt-init-gruntplugin.git" }
   ]
 }
