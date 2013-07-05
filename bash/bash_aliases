@@ -3,4 +3,3 @@
 alias ls="ls --color=auto"
 alias ll="ls -la"
 alias tree='tree -F --dirsfirst -C'
-alias rm='rmtrash' # move to OS X's Trash rather than deleting the file
