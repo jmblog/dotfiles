@@ -11,6 +11,8 @@ Berksfile.lock
 Session.vim
 .netrwhist
 *~
+vim/swaps/*
+vim/backups/*
 
 ### OSX ###
 .DS_Store
