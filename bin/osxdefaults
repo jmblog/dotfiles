@@ -41,6 +41,19 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
+# Make folder name localizations invalid
+sudo rm /Applications/.localized
+rm ~/Applications/.localized
+rm ~/Desktop/.localized
+rm ~/Documents/.localized
+rm ~/Downloads/.localized
+rm ~/Dropbox/.localized
+rm ~/Library/.localized
+rm ~/Movies/.localized
+rm ~/Music/.localized
+rm ~/Pictures/.localized
+rm ~/Public/.localized
+rm ~/Sites/.localized
 
 # Dock, Dashboard, and hot corners
 # ----------------------------------------------------------------------
