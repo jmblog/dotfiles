@@ -41,7 +41,8 @@
       { "pkg": "jshint",     "cmd": "jshint"},
       { "pkg": "uglify-js",  "cmd": "uglifyjs"},
       { "pkg": "yo",         "cmd": "yo"},
-      { "pkg": "mocha",      "cmd": "mocha"}
+      { "pkg": "mocha",      "cmd": "mocha"},
+      { "pkg": "node-inspector", "cmd": "node-inspector" }
     ]
   },
 
