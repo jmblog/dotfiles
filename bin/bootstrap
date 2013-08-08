@@ -78,7 +78,7 @@ done
 eval "$(rbenv init -)"
 
 # Install Ruby
-versions=(1.9.3-p429)
+versions=(2.0.0-p247)
 list="$(to_install "${versions[*]}" "$(rbenv whence ruby)")"
 if [[ "$list" ]]; then
   e_header "Installing Ruby versions: $list"
@@ -101,6 +101,7 @@ if ! type_exists 'bundle'; then
   # Install Bundler
   e_header "Installing Bundler..."
   gem install bundler
+  rbenv rehash
 fi
  
 # Install gems (included Chef) 
