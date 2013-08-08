@@ -66,7 +66,7 @@ end
 # Install Node.js
 node["nodejs"]["versions"].each{|version|
   execute "Install Node.js #{version}" do
-    command "nodebrew install #{version}"
+    command "$HOME/.nodebrew/current/bin/nodebrew install #{version}"
     not_if "nodebrew list | grep #{version}"
   end
 }
@@ -118,7 +118,7 @@ dmg_package "Google Chrome Canary" do
 end
 
 dmg_package "TotalFinder" do
-  source "http://downloads.binaryage.com/TotalFinder-1.4.9.dmg"
+  source "http://downloads.binaryage.com/TotalFinder-1.4.18.dmg"
   action :install
 end
 
