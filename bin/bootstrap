@@ -48,7 +48,10 @@ fi
 
 if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
   e_header "Downloading dotfiles..."
-  git clone --recursive git@github.com:jmblog/dotfiles.git ${DOTFILES_DIRECTORY}
+  mkdir ${DOTFILES_DIRECTORY}
+  curl -fsSLo ${HOME}/dotfiles.tar.gz https://github.com/jmblog/dotfiles/tarball/master
+  tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOTFILES_DIRECTORY}
+  rm -rf ${HOME}/dotfiles.tar.gz
   cd ${DOTFILES_DIRECTORY}
 else
   e_header "Updating dotfiles..."
