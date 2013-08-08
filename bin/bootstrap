@@ -48,10 +48,7 @@ fi
 
 if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
   e_header "Downloading dotfiles..."
-  mkdir ${DOTFILES_DIRECTORY}
-  curl -fsSLo ${HOME}/dotfiles.tar.gz https://github.com/jmblog/dotfiles/tarball/master
-  tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOTFILES_DIRECTORY}
-  rm -rf ${HOME}/dotfiles.tar.gz
+  git clone --recursive git@github.com:jmblog/dotfiles.git ${DOTFILES_DIRECTORY}  
   cd ${DOTFILES_DIRECTORY}
 else
   e_header "Updating dotfiles..."
@@ -66,60 +63,57 @@ source ./lib/utils
 
 # Step 2: Setup Chef
 # ----------------------------------------------------------------------
-if [[ ! $(type -P chef-solo) ]]; then
-  curl -L opscode.com/chef/install.sh | sudo bash
-fi
 
 # Check for rbenv
-#pkgs=(rbenv ruby-build)
-#for pkg in ${pkgs[@]}
-#do
-#  if ! formula_exists $pkg; then
-#    e_header "Installing ${pkg}..."
-#    brew install $pkg
-#  fi
-#done
-#
-## rbenv init
-#eval "$(rbenv init -)"
-#
-## Install Ruby
-#versions=(1.9.3-p429)
-#list="$(to_install "${versions[*]}" "$(rbenv whence ruby)")"
-#if [[ "$list" ]]; then
-#  e_header "Installing Ruby versions: $list"
-#  for version in $list
-#  do
-#    rbenv install "$version"
-#  done
-#  [[ "$(echo "$list" | grep -w "${versions[0]}")" ]]
-#  rbenv global "${versions[0]}"
-#  rbenv shell "${versions[0]}"
-#  rbenv rehash
-#fi
-#
-## Update rubygem
-#e_header "Updating RubyGems..."
-#gem update --system
-#rbenv rehash
-#
-#if ! type_exists 'bundle'; then
-#  # Install Bundler
-#  e_header "Installing Bundler..."
-#  gem install bundler
-#fi
-# 
-## Install gems (included Chef) 
-#e_header "Installing and updating gems with Bundler..."
-#bundle update
-#rbenv rehash
-#sudo chown -R $USER /tmp/chef-solo
-#
-## Install and update third-party cookbooks
-#e_header "Installing and updating Chef's third-party cookbooks with Berkshelf..."
-#cd chef-repo
-#bundle exec berks --path cookbooks
-#cd ..
+pkgs=(rbenv ruby-build)
+for pkg in ${pkgs[@]}
+do
+  if ! formula_exists $pkg; then
+    e_header "Installing ${pkg}..."
+    brew install $pkg
+  fi
+done
+
+# rbenv init
+eval "$(rbenv init -)"
+
+# Install Ruby
+versions=(1.9.3-p429)
+list="$(to_install "${versions[*]}" "$(rbenv whence ruby)")"
+if [[ "$list" ]]; then
+  e_header "Installing Ruby versions: $list"
+  for version in $list
+  do
+    rbenv install "$version"
+  done
+  [[ "$(echo "$list" | grep -w "${versions[0]}")" ]]
+  rbenv global "${versions[0]}"
+  rbenv shell "${versions[0]}"
+  rbenv rehash
+fi
+
+# Update rubygem
+e_header "Updating RubyGems..."
+gem update --system
+rbenv rehash
+
+if ! type_exists 'bundle'; then
+  # Install Bundler
+  e_header "Installing Bundler..."
+  gem install bundler
+fi
+ 
+# Install gems (included Chef) 
+e_header "Installing and updating gems with Bundler..."
+bundle update
+rbenv rehash
+sudo chown -R $USER /tmp/chef-solo
+
+# Install and update third-party cookbooks
+e_header "Installing and updating Chef's third-party cookbooks with Berkshelf..."
+cd chef-repo
+bundle exec berks --path cookbooks
+cd ..
 
 
 # Step 3: Main Stuff
