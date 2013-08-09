@@ -1,0 +1,53 @@
+#!/bin/bash
+
+mkdir ~/getmacapps_temp
+cd ~/getmacapps_temp
+
+# Installing Chrome
+curl -L -O "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg"
+hdiutil mount googlechrome.dmg
+cp -R "/Volumes/Google Chrome/Google Chrome.app" /Applications
+hdiutil unmount "/Volumes/Google Chrome"
+rm googlechrome.dmg
+
+# Installing Handbrake
+curl -L -o HandBrake.dmg "http://sourceforge.net/projects/handbrake/files/0.9.9/HandBrake-0.9.9-MacOSX.6_GUI_x86_64.dmg/download"
+hdiutil mount HandBrake.dmg -mountpoint /Volumes/HandBrake
+cp -R "/Volumes/HandBrake/HandBrake.app" /Applications
+hdiutil unmount "/Volumes/HandBrake"
+rm HandBrake.dmg
+
+# Installing VLC Player
+curl -L -o vlc.dmg "http://get.videolan.org/vlc/2.0.7/macosx/vlc-2.0.7.dmg"
+hdiutil mount vlc.dmg -mountpoint /Volumes/vlc
+cp -R "/Volumes/vlc/VLC.app" /Applications
+hdiutil unmount "/Volumes/vlc"
+rm vlc.dmg
+
+# Installing Dropbox
+curl -L -o Dropbox.dmg "https://www.dropbox.com/download?plat=mac"
+hdiutil mount Dropbox.dmg
+cp -R "/Volumes/Dropbox Installer/Dropbox.app" /Applications
+hdiutil unmount "/Volumes/Dropbox Installer"
+rm Dropbox.dmg
+
+# Installing Sublime Text 2
+echo "Installing Sublime Text 2"
+curl -L -o "Sublime Text 2.0.1.dmg" "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg"
+hdiutil mount "Sublime Text 2.0.1.dmg"
+cp -R "/Volumes/Sublime Text 2/Sublime Text 2.app" /Applications
+hdiutil unmount "/Volumes/Sublime Text 2/Sublime Text 2.app"
+rm "Sublime Text 2.0.1.dmg"
+
+# Installing Transmit
+curl -L -o Transmit.zip "http://www.panic.com/transmit/d/Transmit%204.4.1.zip"
+unzip Transmit.zip
+mv "Transmit.app" /Applications
+rm Transmit.zip
+
+# Installing The Unarchiver
+curl -L -o TheUnarchiver.zip "http://theunarchiver.googlecode.com/files/TheUnarchiver3.8.zip"
+unzip TheUnarchiver.zip
+mv "The Unarchiver.app" /Applications
+rm TheUnarchiver.zip
+

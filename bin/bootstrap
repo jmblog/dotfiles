@@ -123,8 +123,19 @@ e_header "Setup development environment..."
 chef_cmd='chef-solo -c chef-repo/solo.rb -j chef-repo/nodes/localhost.json'
 printf "${chef_cmd}\n" && ${chef_cmd}
 
+# Step 4: Install Apps 
+# ----------------------------------------------------------------------
+seek_confirmation "Warning: Do you want to install apps?"
 
-# Step 4: OS X Settings
+if is_confirmed; then
+  bash ./bin/getapps
+  e_success "Apps are installed"
+else
+  printf "Skipped installing apps.\n"
+fi
+
+
+# Step 5: OS X Settings
 # ----------------------------------------------------------------------
 seek_confirmation "Warning: This step may modify your OS X system defaults."
 
@@ -134,5 +145,6 @@ if is_confirmed; then
 else
   printf "Skipped OS X settings update.\n"
 fi
+
 
 e_header "All done!"
