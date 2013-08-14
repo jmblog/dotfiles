@@ -42,7 +42,8 @@
       { "pkg": "uglify-js",  "cmd": "uglifyjs"},
       { "pkg": "yo",         "cmd": "yo"},
       { "pkg": "mocha",      "cmd": "mocha"},
-      { "pkg": "node-inspector", "cmd": "node-inspector" }
+      { "pkg": "node-inspector", "cmd": "node-inspector" },
+      { "pkg": "http-server", "cmd": "http-server" }
     ]
   },
 
