@@ -12,7 +12,9 @@
       "tree",
       "wget",
       "colordiff",
-      "phantomjs"
+      "phantomjs",
+      "coda-cli",
+      "vim"
     ]
   },
 
