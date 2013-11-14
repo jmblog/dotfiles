@@ -1,6 +1,7 @@
 #!/bin/bash
 
 files=(
+  $HOME/.dotfiles/lib/utils         # Utils
   $HOME/.dotfiles/bash/bash_options # Options
   $HOME/.dotfiles/bash/bash_exports # Exports
   $HOME/.dotfiles/bash/bash_aliases # Aliases
