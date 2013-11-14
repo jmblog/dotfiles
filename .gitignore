@@ -13,6 +13,7 @@ Session.vim
 *~
 vim/swaps/*
 vim/backups/*
+vim/bundle/*
 
 ### OSX ###
 .DS_Store
