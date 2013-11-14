@@ -3,4 +3,7 @@
 alias ls="ls --color=auto"
 alias ll="ls -la"
 alias tree='tree -F --dirsfirst -C'
-alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
+
+if is_osx; then
+  alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
+fi

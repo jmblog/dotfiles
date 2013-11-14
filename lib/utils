@@ -70,3 +70,10 @@ function formula_exists() {
   e_warning "Missing formula: $1"
   return 1
 }
+
+function is_osx() {
+  if [[ "$OSTYPE" =~ ^darwin ]]; then
+    return 1
+  fi
+  return 0
+}
