@@ -1,0 +1,6 @@
+[submodule "bin/ack"]
+	path = bin/ack
+	url = git@github.com:petdance/ack.git
+[submodule "lib/ack"]
+	path = lib/ack
+	url = git@github.com:petdance/ack.git
