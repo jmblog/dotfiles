@@ -14,7 +14,8 @@
       "colordiff",
       "phantomjs",
       "coda-cli",
-      "vim"
+      "vim",
+      "jq"
     ]
   },
 
