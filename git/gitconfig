@@ -9,4 +9,7 @@
   st = status
   co = checkout
   br = branch
-  ci = commit 
+  ci = commit
+
+[core]
+  pager = less -r
