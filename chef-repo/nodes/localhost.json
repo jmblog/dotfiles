@@ -15,7 +15,8 @@
       "phantomjs",
       "coda-cli",
       "vim",
-      "jq"
+      "jq",
+      "mobile-shell"
     ]
   },
 
