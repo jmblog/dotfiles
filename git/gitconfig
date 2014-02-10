@@ -11,9 +11,6 @@
   br = branch
   ci = commit
 
-[core]
-  pager = less -r
-
 [pager]
   log = diff-highlight | less -r
   show = diff-highlight | less -r
