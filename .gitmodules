@@ -1,3 +1,6 @@
 [submodule "vim/bundle/neobundle.vim"]
 	path = vim/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim
+[submodule "ack/ack2"]
+	path = ack/ack2
+	url = git@github.com:petdance/ack2.git
