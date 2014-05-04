@@ -22,7 +22,7 @@ done
 unset files
 
 # Init rbenv
-if type "rbenv" > /dev/null 2>&1; then
+if [[ $(type -P rbenv) ]]; then
   eval "$(rbenv init -)"
 fi
 
