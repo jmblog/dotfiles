@@ -73,7 +73,7 @@ function formula_exists() {
 
 function is_osx() {
   if [[ "$OSTYPE" =~ ^darwin ]]; then
-    return 1
+    return 0
   fi
-  return 0
+  return 1
 }

@@ -4,3 +4,6 @@
 [submodule "ack/ack2"]
 	path = ack/ack2
 	url = git@github.com:petdance/ack2.git
+[submodule "bash/bash-completion"]
+	path = bash/bash-completion
+	url = git@github.com:GArik/bash-completion.git
