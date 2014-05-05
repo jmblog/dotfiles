@@ -1,0 +1,35 @@
+# Install command-line tools using Homebrew
+# Usage: `brew bundle ~/.dotfiles/osx/homebrew/Brewfile`
+
+# Make sure we're using the latest Homebrew
+update
+
+# Upgrade any already-installed formulae
+upgrade
+
+# Install GNU core utilities (those that come with OS X are outdated)
+install coreutils
+
+# Install bash 4
+install bash
+
+# Install Ack2
+install ack
+
+# Install ColorDiff
+install colordiff
+
+# Install tree
+install tree
+
+# Install wget
+install wget
+
+# Install vim
+install vim
+
+# Install PhantomJS
+install phantomjs
+
+# Remove outdated versions from the cellar
+cleanup
