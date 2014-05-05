@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 files=(
   $HOME/.dotfiles/lib/utils         # Utils
@@ -22,15 +22,13 @@ done
 unset files
 
 # Init rbenv
-if [[ $(type -P rbenv) ]]; then
+if type_exists rbenvs; then
   eval "$(rbenv init -)"
 fi
 
-# Bash completion (Latest bash-completion needs bash 4.1+, but osx still uses bash 3.x. So use one installed via Homebrew.)
-if is_osx; then
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-  fi
+# Bash completion (Latest bash-completion needs bash 4.1+, but osx still uses bash 3.x. Bash 4 will be installed via Homebrew.)
+if bash --version | grep -qs 'version 3'; then
+  echo -e "\x1B[31mYou use bash 3.x. If you want to use Bash completion, update to 4.1+.\x1B[39m"
 else
   if [ -f $HOME/.dotfiles/bash/bash-completion/bash_completion ]; then
     . $HOME/.dotfiles/bash/bash-completion/bash_completion
