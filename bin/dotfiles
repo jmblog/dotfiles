@@ -65,8 +65,10 @@ function mirrorfiles() {
       else
         log_info "Skipped."
       fi
-      echo ""
+    else
+        ln -fs "${DOTFILES_DIRECTORY}/vim" "${HOME}/.vim"
     fi
+    echo ""
 
     # Create the necessary symbolic links between the `.dotfiles` and `HOME`
     # directory. The `bash_profile` sources other files directly from the
