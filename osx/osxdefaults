@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Ask for the administrator password upfront
 sudo -v
@@ -133,7 +133,7 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 # Top left screen corner → Mission Control
 defaults write com.apple.dock wvous-tl-corner -int 2
 defaults write com.apple.dock wvous-tl-modifier -int 0
-# Top right screen corner →Nothing 
+# Top right screen corner →Nothing
 defaults write com.apple.dock wvous-tr-corner -int 0
 defaults write com.apple.dock wvous-tr-modifier -int 0
 # Bottom right screen corner → Desktop
