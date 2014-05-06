@@ -235,7 +235,9 @@ if is_osx; then
     if [[ "$SHELL" != "$binroot/bash" ]]; then
       log_subhead "Making $binroot/bash your default shell"
       sudo chsh -s "$binroot/bash" "$USER" >/dev/null 2>&1
-      log_info "** Please exit and restart all your shells."
+      log_info "To make Bash 4 your default shell"
+      log_info "  1. Add $binroot/bash into /etc/shells"
+      log_info "  2. Run `chsh -s $binroot/bash`"
     fi
 
     log_ok "Done!"
