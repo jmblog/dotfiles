@@ -173,6 +173,7 @@ else
   git pull
   git submodule update --init --recursive --quiet
 fi
+echo ""
 
 # Utilities
 source ${DOTFILES_DIRECTORY}/lib/utils
