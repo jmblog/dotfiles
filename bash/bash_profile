@@ -27,7 +27,7 @@ if type_exists rbenvs; then
 fi
 
 # Bash completion (Latest bash-completion needs bash 4.1+, but osx still uses bash 3.x. Bash 4 will be installed via Homebrew.)
-if bash --version | grep -qs 'version 3'; then
+if [[ ! "$BASH_VERSION" =~ ^4 ]]; then
   echo -e "\x1B[31mYou use bash 3.x. If you want to use Bash completion, update to 4.1+.\x1B[39m"
 else
   if [ -f $HOME/.dotfiles/bash/bash-completion/bash_completion ]; then
