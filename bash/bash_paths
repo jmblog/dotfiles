@@ -13,6 +13,7 @@ dirs_to_append=(
   "$HOME/bin"
   "$HOME/.dotfiles/bin"
   "$HOME/.nodebrew/current/bin" # Add nodebrew bin
+  "$HOME/.rbenv/bin" # Add rbenv bin
 )
 
 for i in ${!dirs_to_prepend[*]}
