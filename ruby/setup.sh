@@ -20,6 +20,7 @@ if [[ ! "$(type -P gem)" ]]; then
   tar zxf rubygems-2.2.2.tgz
   cd rubygems-2.2.2/
   sudo ruby setup.rb
+  rm -rf rubygems-2.2.2/
 fi
 
 gem install bundler
