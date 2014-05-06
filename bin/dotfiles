@@ -28,32 +28,38 @@ function log_info()    { echo -e "\x1B[33m==> \x1B[39m$@"; }
 
 function link() {
     # Force create/replace the symlink.
-    log_info "diff ${DOTFILES_DIRECTORY}/${1} ${HOME}/${2}"
-    diff "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
-    seek_confirmation "Are you sure to overwrite ${2}?"
-    if is_confirmed; then
-      ln -fs "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
-      log_ok "Done!"
+    if ! diff "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}" > /dev/null 2>&1; then
+      log_info "diff ${DOTFILES_DIRECTORY}/${1} ${HOME}/${2}"
+      diff "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
+      seek_confirmation "Are you sure to overwrite ${2}?"
+      if is_confirmed; then
+        ln -fs "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
+        log_ok "Done!"
+      else
+        log_info "Skipped."
+      fi
+      echo ""
     else
-      log_info "Skipped."
+      ln -fs "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
     fi
-    echo ""
 }
 
 function mirrorfiles() {
     # Copy `.gitconfig`.
     # Any global git commands in `~/.bash_profile.local` will be written to
     # `.gitconfig`. This prevents them being committed to the repository.
-    log_info "diff ${DOTFILES_DIRECTORY}/git/gitconfig ${HOME}/.gitconfig"
-    diff ${DOTFILES_DIRECTORY}/git/gitconfig ${HOME}/.gitconfig
-    seek_confirmation "Are you sure to overwrite .gitconfig?"
-    if is_confirmed; then
-      rsync -avz --quiet ${DOTFILES_DIRECTORY}/git/gitconfig  ${HOME}/.gitconfig
-      log_ok "Done!"
+    if ! diff ${DOTFILES_DIRECTORY}/git/gitconfig ${HOME}/.gitconfig > /dev/null 2>&1; then
+      log_info "diff ${DOTFILES_DIRECTORY}/git/gitconfig ${HOME}/.gitconfig"
+      diff ${DOTFILES_DIRECTORY}/git/gitconfig ${HOME}/.gitconfig
+      seek_confirmation "Are you sure to overwrite .gitconfig?"
+      if is_confirmed; then
+        rsync -avz --quiet ${DOTFILES_DIRECTORY}/git/gitconfig  ${HOME}/.gitconfig
+      else
+        log_info "Skipped."
+      fi
     else
-      log_info "Skipped."
+      rsync -avz --quiet ${DOTFILES_DIRECTORY}/git/gitconfig  ${HOME}/.gitconfig
     fi
-    echo ""
 
     # Force remove the vim directory if it's already there.
     if [ -e "${HOME}/.vim" ]; then
@@ -61,14 +67,12 @@ function mirrorfiles() {
       if is_confirmed; then
         rm -rf "${HOME}/.vim"
         ln -fs "${DOTFILES_DIRECTORY}/vim" "${HOME}/.vim"
-        log_ok "Done!"
       else
         log_info "Skipped."
       fi
     else
         ln -fs "${DOTFILES_DIRECTORY}/vim" "${HOME}/.vim"
     fi
-    echo ""
 
     # Create the necessary symbolic links between the `.dotfiles` and `HOME`
     # directory. The `bash_profile` sources other files directly from the
@@ -171,7 +175,7 @@ else
 fi
 
 # Utilities
-source ./lib/utils
+source ${DOTFILES_DIRECTORY}/lib/utils
 
 
 # Install dotfiles
@@ -190,7 +194,7 @@ echo ""
 log_header "Installing node packages..."
 seek_confirmation
 if is_confirmed; then
-  log_warn "** TODO **"
+  bash ${DOTFILES_DIRECTORY}/node/setup.sh
   log_ok "Done!"
 else
   log_info "Skipped."
@@ -204,7 +208,7 @@ echo ""
 log_header "Installing ruby gems..."
 seek_confirmation
 if is_confirmed; then
-  log_warn "** TODO **"
+  bash ${DOTFILES_DIRECTORY}/ruby/setup.sh
   log_ok "Done!"
 else
   log_info "Skipped."
