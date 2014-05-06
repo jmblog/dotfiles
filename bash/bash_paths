@@ -1,15 +1,19 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 dirs_to_prepend=(
   "/usr/local/bin" # Ensure that this bin always takes precedence over `/usr/bin`
-  "$(brew --prefix coreutils)/libexec/gnubin" # Add brew-installed GNU core utilities bin
 )
+
+if is_osx; then
+  dirs_to_prepend=("${dirs_to_prepend[@]}" "$(brew --prefix coreutils)/libexec/gnubin") # Add brew-installed GNU core utilities bin
+fi
 
 dirs_to_append=(
   "/usr/bin"
   "$HOME/bin"
   "$HOME/.dotfiles/bin"
   "$HOME/.nodebrew/current/bin" # Add nodebrew bin
+  "$HOME/.rbenv/bin" # Add rbenv bin
 )
 
 for i in ${!dirs_to_prepend[*]}

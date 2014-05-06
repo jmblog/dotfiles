@@ -10,6 +10,7 @@
   co = checkout
   br = branch
   ci = commit
+  delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
 
 [pager]
   log = diff-highlight | less -r

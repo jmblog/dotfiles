@@ -1,4 +1,0 @@
-site :opscode
-
-cookbook 'homebrew'
-cookbook 'dmg'

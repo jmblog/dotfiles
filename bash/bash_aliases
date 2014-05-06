@@ -1,10 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 alias ls="ls --color=auto"
 alias ll="ls -la"
 alias tree='tree -F --dirsfirst -C'
 alias diff="colordiff"
-
-if is_osx; then
-  alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
-fi

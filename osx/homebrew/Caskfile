@@ -1,0 +1,27 @@
+# Install native apps
+# Usage: `brew bundle ~/.dotfiles/osx/homebrew/Caskfile`
+
+tap phinze/homebrew-cask
+install brew-cask
+
+upgrade
+
+cask install atom 2> /dev/null
+cask install coda 2> /dev/null
+cask install coteditor 2> /dev/null
+cask install dropbox 2> /dev/null
+cask install firefox 2> /dev/null
+cask install google-chrome 2> /dev/null
+cask install google-chrome-canary 2> /dev/null
+cask install google-japanese-ime 2> /dev/null
+cask install hipchat 2> /dev/null
+cask install imageoptim 2> /dev/null
+cask install iterm2 2> /dev/null
+cask install keyremap4macbook 2> /dev/null
+cask install kobito 2> /dev/null
+cask install omnigraffle 2> /dev/null
+cask install simplecap 2> /dev/null
+cask install totalfinder 2> /dev/null
+cask install transmit 2> /dev/null
+cask install virtualbox 2> /dev/null
+cask install vlc 2> /dev/null

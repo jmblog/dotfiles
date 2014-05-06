@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # USER
 export USER="jmblog"
@@ -25,3 +25,6 @@ export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 
 # Unset default LS_COLORS
 unset LS_COLORS
+
+# Change the directories to install apps with Homebrew Cask
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
