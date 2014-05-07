@@ -4,3 +4,7 @@ alias ls="ls --color=auto"
 alias ll="ls -la"
 alias tree='tree -F --dirsfirst -C'
 alias diff="colordiff"
+
+if type_exists htop; then
+  alias top="htop"
+fi

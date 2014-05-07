@@ -31,5 +31,8 @@ install vim
 # Install PhantomJS
 install phantomjs
 
+# Install htop
+install htop
+
 # Remove outdated versions from the cellar
 cleanup
