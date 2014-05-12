@@ -19,6 +19,7 @@ cask install imageoptim 2> /dev/null
 cask install iterm2 2> /dev/null
 cask install keyremap4macbook 2> /dev/null
 cask install kobito 2> /dev/null
+cask install launchrocket 2> /dev/null
 cask install omnigraffle 2> /dev/null
 cask install simplecap 2> /dev/null
 cask install totalfinder 2> /dev/null
