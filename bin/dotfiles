@@ -82,6 +82,7 @@ function mirrorfiles() {
     link "bash/bash_profile"  ".bash_profile"
     link "git/gitattributes"  ".gitattributes"
     link "git/gitignore"      ".gitignore"
+    link "bash/inputrc"       ".inputrc"
     link "tmux/tmuxrc"        ".tmuxrc"
     link "vim/vimrc"          ".vimrc"
 }
