@@ -16,3 +16,9 @@
   log = diff-highlight | less -r
   show = diff-highlight | less -r
   diff = diff-highlight | less -r
+
+[push]
+  default = current
+
+[github]
+  user = jmblog
