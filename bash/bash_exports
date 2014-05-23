@@ -10,7 +10,7 @@ export LANG="ja_JP.UTF-8"
 export EDITOR="vim"
 
 # Ignore duplicate commands in the history
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth:erasedups
 
 # Increase the maximum number of lines contained in the history file
 # (default is 500)
@@ -21,7 +21,7 @@ export HISTFILESIZE=10000
 export HISTSIZE=10000
 
 # Make some commands not show up in history
-export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
+export HISTIGNORE="ls:ls *:ll:ll *;cd:cd -:pwd:exit:date:* --help:history"
 
 # Unset default LS_COLORS
 unset LS_COLORS
