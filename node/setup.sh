@@ -21,3 +21,5 @@ npm install -g grunt-cli
 npm install -g bower
 npm install -g jshint
 npm install -g uglifyjs
+npm install -g gulp
+
