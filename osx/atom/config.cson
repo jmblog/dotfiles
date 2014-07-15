@@ -1,0 +1,17 @@
+'exception-reporting':
+  'userId': '9a0fc135-6b10-32a3-829f-6113bc15a030'
+'release-notes':
+  'viewedVersion': '0.95.0'
+'welcome':
+  'showOnStartup': false
+'metrics':
+  'userId': 'b52998dda154e5f0664dc6f4bd03c798e49e2ea5'
+'editor':
+  'fontSize': 12
+  'preferredLineLength': 120
+  'showInvisibles': true
+'core':
+  'themes': [
+    'atom-light-ui'
+    'atom-light-syntax'
+  ]
