@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
+TS=$(date +'%Y%m%d%H%M%S')
 
 echo -e "\n\x1B[32mDotfiles\x1B[39m - https://github.com/jmblog/dotfiles"
 
@@ -65,13 +66,26 @@ function mirrorfiles() {
     if [ -e "${HOME}/.vim" ]; then
       seek_confirmation "Are you sure to overwrite .vim directory?"
       if is_confirmed; then
-        rm -rf "${HOME}/.vim"
+        mv "${HOME}/.vim" "${HOME}/_vim-${TS}"
         ln -fs "${DOTFILES_DIRECTORY}/vim" "${HOME}/.vim"
       else
         log_info "Skipped."
       fi
     else
         ln -fs "${DOTFILES_DIRECTORY}/vim" "${HOME}/.vim"
+    fi
+
+    # Atom
+    if [ -e "${HOME}/.atom" ]; then
+      seek_confirmation "Are you sure to overwrite .atom directory?"
+      if is_confirmed; then
+        mv "${HOME}/.atom" "${HOME}/_atom-${TS}"
+        ln -fs "${DOTFILES_DIRECTORY}/osx/atom" "${HOME}/.atom"
+      else
+        log_info "Skipped."
+      fi
+    else
+        ln -fs "${DOTFILES_DIRECTORY}/osx/atom" "${HOME}/.atom"
     fi
 
     # Create the necessary symbolic links between the `.dotfiles` and `HOME`
@@ -208,12 +222,16 @@ echo ""
 # ----------------------------------------------------------------------
 
 log_header "Installing ruby gems..."
-seek_confirmation
-if is_confirmed; then
-  bash ${DOTFILES_DIRECTORY}/ruby/setup.sh
-  log_ok "Done!"
+if use_boxen; then
+  log_info "Boxen is installed. Skip this part."
 else
-  log_info "Skipped."
+  seek_confirmation
+  if is_confirmed; then
+    bash ${DOTFILES_DIRECTORY}/ruby/setup.sh
+    log_ok "Done!"
+  else
+    log_info "Skipped."
+  fi
 fi
 echo ""
 
@@ -248,11 +266,11 @@ if is_osx; then
   echo ""
 fi
 
-# Install osx native apps with brew cask
+# Install osx native apps and fonts with brew cask
 # ----------------------------------------------------------------------
 
 if is_osx; then
-  log_header "Installing osx native apps..."
+  log_header "Installing osx native apps and fonts..."
   seek_confirmation
   if is_confirmed; then
     brew bundle ${DOTFILES_DIRECTORY}/osx/homebrew/Caskfile
@@ -262,6 +280,7 @@ if is_osx; then
   fi
   echo ""
 fi
+
 
 # Set OS X system defaults
 # ----------------------------------------------------------------------
