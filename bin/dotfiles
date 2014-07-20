@@ -290,6 +290,7 @@ if is_osx; then
   seek_confirmation
   if is_confirmed; then
     bash ./bin/osxdefaults
+    bash ~/.dotfiles/osx/karabiner.sh
     log_ok "Done!"
     log_info "** You may need to restart."
   else
