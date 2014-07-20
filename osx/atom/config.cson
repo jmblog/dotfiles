@@ -7,11 +7,14 @@
 'metrics':
   'userId': 'b52998dda154e5f0664dc6f4bd03c798e49e2ea5'
 'editor':
-  'fontSize': 12
-  'preferredLineLength': 120
+  'preferredLineLength': 150
   'showInvisibles': true
+  'fontFamily': 'Inconsolata'
+  'fontSize': 14
+  'normalizeIndentOnPaste': false
 'core':
   'themes': [
     'atom-light-ui'
     'atom-light-syntax'
   ]
+  'projectHome': '/Users/jmblog/src'

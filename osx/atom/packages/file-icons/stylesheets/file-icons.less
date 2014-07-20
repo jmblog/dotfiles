@@ -32,7 +32,7 @@
   // Code icon
   &[data-name$=".xml"]:before { .code-icon; .medium-blue;   }
 
-  // Javascript icon
+  // JavaScript icon
   &[data-name$=".js"]:before  { .js-icon; .medium-yellow; }
   &[data-name$=".jsx"]:before { .js-icon; .medium-green; }
   &[data-name$=".ts"]:before  { .js-icon; .medium-purple; }
@@ -66,11 +66,16 @@
 
   // HTML5 icon
   &[data-name$=".erb"]:before  { .html5-icon; .medium-red;    }
-  &[data-name$=".php"]:before  { .php-icon; .dark-blue;     }
   &[data-name$=".html"]:before { .html5-icon; .medium-orange; }
   &[data-name$=".haml"]:before { .html5-icon; .light-red;     }
   &[data-name$=".jade"]:before { .html5-icon; .medium-green;  }
   &[data-name$=".jsp"]:before  { .html5-icon; .medium-purple; }
+  &[data-name$=".ctp"]:before  { .html5-icon; .medium-blue;   }
+  &[data-name$=".ejs"]:before  { .html5-icon; .medium-green; }
+
+  // Mustache icon
+  &[data-name$=".hbs"]:before,
+  &[data-name$=".mustache"]:before { .hbs-mustache-icon; .medium-orange; }
 
   // Gear icon
   &[data-name$=".gitignore"]:before     { .gear-icon;                 }
@@ -85,9 +90,16 @@
   &[data-name=".npmignore"]:before       { .node-icon; }
   &[data-name="npm-debug.log"]:before    { .node-icon; .medium-red; }
 
+  // Bower icon
+  &[data-name=".bowerrc"]:before     { .twitter-icon; }
+  &[data-name="bower.json"]:before   { .twitter-icon; .medium-yellow; }
+
   // Sass icon
   &[data-name$=".sass"]:before { .sass-icon; .light-purple; }
   &[data-name$=".scss"]:before { .sass-icon; .dark-purple; }
+
+  // PHP icon
+  &[data-name$=".php"]:before  { .php-icon; .dark-blue; }
 
   // Python icon
   &[data-name$=".py"]:before { .python-icon; .dark-yellow; }
@@ -163,9 +175,4 @@
   &[data-name="GULPFILE.coffee"]:before,
   &[data-name="Gulpfile.coffee"]:before,
   &[data-name="gulpfile.coffee"]:before { .gulp-icon; .medium-maroon; }
-
-  // Mustache icon
-  &[data-name$=".hbs"]:before,
-  &[data-name$=".mustache"]:before { .hbs-mustache-icon; .medium-orange; }
-
 }

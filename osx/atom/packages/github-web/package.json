@@ -1,0 +1,27 @@
+{
+  "name": "github-web",
+  "theme": "syntax",
+  "version": "0.3.0",
+  "private": false,
+  "description": "GitHub website style syntax theme.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonMidhir/github-web"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "readme": "# Github Website theme\n\nSyntax highlighting for Atom, just like it is in the Github website code viewer.\n\n![\"Screenshot of Github-web\"](https://s3-us-west-2.amazonaws.com/useful-images-midhir/github-web.png \"Screenshot of Github-web\")\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/JonMidhir/github-web/issues"
+  },
+  "homepage": "https://github.com/JonMidhir/github-web",
+  "_id": "github-web@0.3.0",
+  "dist": {
+    "shasum": "6d42647b6e57d2478de3e4a50601d4fbc3f54e1f"
+  },
+  "_resolved": "/var/folders/n4/64wzs3x10bq8tg2zdsthx8vw0000gp/T/d-114615-7264-1srg9ox/package.tgz",
+  "_from": "/var/folders/n4/64wzs3x10bq8tg2zdsthx8vw0000gp/T/d-114615-7264-1srg9ox/package.tgz"
+}
