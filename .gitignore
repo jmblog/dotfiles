@@ -34,3 +34,10 @@ Gemfile.lock
 ### SASS ###
 ### SASS Ignores - "Sassy CSS" http://sass-lang.com/
 *.sass-cache
+
+### ATOM ###
+osx/atom/storage
+osx/atom/compile-cache
+osx/atom/dev
+osx/atom/.npm
+osx/atom/.node-gyp
