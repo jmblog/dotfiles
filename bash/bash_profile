@@ -39,3 +39,4 @@ fi
 if  [ -f $HOME/.dotfiles/git/git-completion.bash ]; then
   source $HOME/.dotfiles/git/git-completion.bash
 fi
+

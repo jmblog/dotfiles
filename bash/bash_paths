@@ -33,3 +33,4 @@ done
 unset dirs_to_prepend dirs_to_append
 
 export PATH
+
