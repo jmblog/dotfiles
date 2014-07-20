@@ -11,6 +11,7 @@ source "${HOME}/.bashrc"
 
 rbenv install 2.1.1
 rbenv rehash
+rbenv global 2.1.1
 
 # Install ruby gems using bundler
 if [[ ! "$(type -P gem)" ]]; then
