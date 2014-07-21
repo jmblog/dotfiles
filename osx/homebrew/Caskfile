@@ -13,7 +13,6 @@ cask install coteditor 2> /dev/null
 cask install dropbox 2> /dev/null
 cask install firefox 2> /dev/null
 cask install google-chrome 2> /dev/null
-cask install google-chrome-canary 2> /dev/null
 cask install google-japanese-ime 2> /dev/null
 cask install hipchat 2> /dev/null
 cask install imageoptim 2> /dev/null
@@ -23,6 +22,7 @@ cask install kobito 2> /dev/null
 cask install launchrocket 2> /dev/null
 cask install omnigraffle 2> /dev/null
 cask install simplecap 2> /dev/null
+cask install sqwiggle 2> /dev/null
 cask install totalfinder 2> /dev/null
 cask install transmit 2> /dev/null
 cask install virtualbox 2> /dev/null
@@ -33,5 +33,5 @@ cask install zoomus 2> /dev/null
 tap caskroom/fonts
 
 cask install font-inconsolata 2> /dev/null
-cask install font-noto-sans-japanese 2> dev/null
-cask install font-source-code-pro 2> dev/null
+cask install font-noto-sans-japanese 2> /dev/null
+cask install font-source-code-pro 2> /dev/null
