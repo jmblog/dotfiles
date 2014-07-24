@@ -1,7 +1,7 @@
 {
   "name": "github-web",
   "theme": "syntax",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": false,
   "description": "GitHub website style syntax theme.",
   "repository": {
@@ -18,10 +18,10 @@
     "url": "https://github.com/JonMidhir/github-web/issues"
   },
   "homepage": "https://github.com/JonMidhir/github-web",
-  "_id": "github-web@0.3.0",
+  "_id": "github-web@0.4.0",
   "dist": {
-    "shasum": "6d42647b6e57d2478de3e4a50601d4fbc3f54e1f"
+    "shasum": "3b3f41b9ef2edde63d2a2797c0758d8e8b560add"
   },
-  "_resolved": "/var/folders/n4/64wzs3x10bq8tg2zdsthx8vw0000gp/T/d-114615-7264-1srg9ox/package.tgz",
-  "_from": "/var/folders/n4/64wzs3x10bq8tg2zdsthx8vw0000gp/T/d-114615-7264-1srg9ox/package.tgz"
+  "_resolved": "/var/folders/n4/64wzs3x10bq8tg2zdsthx8vw0000gp/T/d-114623-91243-zyf2rk/package.tgz",
+  "_from": "/var/folders/n4/64wzs3x10bq8tg2zdsthx8vw0000gp/T/d-114623-91243-zyf2rk/package.tgz"
 }
