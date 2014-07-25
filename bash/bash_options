@@ -4,10 +4,10 @@
 shopt -s cdspell
 
 # Share bash history across terminals (thanks @iandeth)
-function share_history {
-    history -a
-    history -c
-    history -r
-}
-PROMPT_COMMAND='share_history'
-shopt -u histappend
+#function share_history {
+#    history -a
+#    history -c
+#    history -r
+#}
+#PROMPT_COMMAND='share_history'
+#shopt -u histappend
