@@ -1,10 +1,7 @@
 # Install native apps
 # Usage: `brew bundle ~/.dotfiles/osx/homebrew/Caskfile`
 
-tap phinze/homebrew-cask
-install brew-cask
-
-upgrade
+install caskroom/cask/brew-cask
 
 cask install alfred 2> /dev/null
 cask install atom 2> /dev/null
