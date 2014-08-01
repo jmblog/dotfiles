@@ -17,6 +17,7 @@ cask install iterm2 2> /dev/null
 cask install karabiner 2> /dev/null
 cask install kobito 2> /dev/null
 cask install launchrocket 2> /dev/null
+cask install licecap 2> /dev/null
 cask install omnigraffle 2> /dev/null
 cask install simplecap 2> /dev/null
 cask install sqwiggle 2> /dev/null
