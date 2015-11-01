@@ -4,27 +4,15 @@ DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 source "${HOME}/.bashrc"
 source ${DOTFILES_DIRECTORY}/lib/utils
 
+# Install or update nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
 
-if ! use_boxen; then
-  # Install stable version's node.js via nodebrew
-  if [[ ! "$(type -P nodebrew)" ]]; then
-    curl -L git.io/nodebrew | perl - setup
-    source "${HOME}/.bashrc"
-  else
-    nodebrew selfupdate
-  fi
-
-  nodebrew install-binary stable
-  nodebrew use stable
-fi
+# Install the stable version's node.js with nvm
+nvm install stable
+nvm use stable
 
 # Install npm packages
 npm update -g npm
 
-npm install -g yo
-npm install -g grunt-cli
 npm install -g bower
-npm install -g jshint
-npm install -g uglifyjs
 npm install -g gulp
-

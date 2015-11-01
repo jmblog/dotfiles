@@ -13,8 +13,8 @@ install coreutils
 # Install bash 4
 install bash
 
-# Install Ack2
-install ack
+# Install Ag
+install the_silver_searcher
 
 # Install ColorDiff
 install colordiff

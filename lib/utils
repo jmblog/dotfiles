@@ -49,10 +49,3 @@ function is_osx() {
   fi
   return 1
 }
-
-function use_boxen() {
-  if [ -f /opt/boxen/env.sh ]; then
-    return 0
-  fi
-  return 1
-}

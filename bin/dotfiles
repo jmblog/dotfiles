@@ -91,7 +91,7 @@ function mirrorfiles() {
     # Create the necessary symbolic links between the `.dotfiles` and `HOME`
     # directory. The `bash_profile` sources other files directly from the
     # `.dotfiles` repository.
-    link "ack/ackrc"          ".ackrc"
+    link "ag/agignore"        ".agignore"
     link "bash/bashrc"        ".bashrc"
     link "bash/bash_profile"  ".bash_profile"
     link "git/gitattributes"  ".gitattributes"
@@ -222,16 +222,12 @@ echo ""
 # ----------------------------------------------------------------------
 
 log_header "Installing ruby gems..."
-if use_boxen; then
-  log_info "Boxen is installed. Skip this part."
+seek_confirmation
+if is_confirmed; then
+  bash ${DOTFILES_DIRECTORY}/ruby/setup.sh
+  log_ok "Done!"
 else
-  seek_confirmation
-  if is_confirmed; then
-    bash ${DOTFILES_DIRECTORY}/ruby/setup.sh
-    log_ok "Done!"
-  else
-    log_info "Skipped."
-  fi
+  log_info "Skipped."
 fi
 echo ""
 
