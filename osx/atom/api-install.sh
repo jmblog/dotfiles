@@ -1,1 +1,0 @@
-apm install --packages-file Atomfile
