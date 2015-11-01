@@ -41,3 +41,5 @@ osx/atom/compile-cache
 osx/atom/dev
 osx/atom/.npm
 osx/atom/.node-gyp
+osx/atom/packages
+osx/atom/.apm

@@ -1,20 +1,33 @@
-'exception-reporting':
-  'userId': '9a0fc135-6b10-32a3-829f-6113bc15a030'
-'release-notes':
-  'viewedVersion': '0.95.0'
-'welcome':
-  'showOnStartup': false
-'metrics':
-  'userId': 'b52998dda154e5f0664dc6f4bd03c798e49e2ea5'
-'editor':
-  'preferredLineLength': 150
-  'showInvisibles': true
-  'fontFamily': 'Inconsolata'
-  'fontSize': 14
-  'normalizeIndentOnPaste': false
-'core':
-  'themes': [
-    'atom-light-ui'
-    'atom-light-syntax'
-  ]
-  'projectHome': '/Users/jmblog/src'
+"*":
+  "exception-reporting":
+    userId: "9a0fc135-6b10-32a3-829f-6113bc15a030"
+  "release-notes":
+    viewedVersion: "0.95.0"
+  welcome:
+    showOnStartup: false
+  metrics:
+    userId: "b52998dda154e5f0664dc6f4bd03c798e49e2ea5"
+  editor:
+    fontFamily: "Inconsolata"
+    preferredLineLength: 150
+    invisibles: {}
+    showInvisibles: true
+    showIndentGuide: true
+  core:
+    themes: [
+      "atom-light-ui"
+      "atom-light-syntax"
+    ]
+    projectHome: "/Users/jmblog/src"
+    disabledPackages: [
+      "ruby-slim"
+    ]
+  "autocomplete-plus": {}
+  emmet: {}
+  "tree-view": {}
+  "highlight-selected": {}
+  "atom-color-highlight": {}
+  pigments: {}
+".slim.text":
+  editor:
+    preferredLineLength: 150
