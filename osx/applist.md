@@ -2,7 +2,7 @@
 - Atom
 - Dropbox
 - Google Chrome
-- Image Optim
+- ImageOptim
 - iTerm
 - Karabiner
 - SimpleCap
