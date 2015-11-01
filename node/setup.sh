@@ -5,7 +5,8 @@ source "${HOME}/.bashrc"
 source ${DOTFILES_DIRECTORY}/lib/utils
 
 # Install or update nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
+git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+. ~/.nvm/nvm.sh
 
 # Install the stable version's node.js with nvm
 nvm install stable
