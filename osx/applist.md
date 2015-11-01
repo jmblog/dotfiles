@@ -17,3 +17,4 @@
 - PopClip
 - Sketch
 - Slack
+- Xcode
