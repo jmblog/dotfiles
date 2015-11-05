@@ -210,7 +210,8 @@ echo ""
 log_header "Installing node packages..."
 seek_confirmation
 if is_confirmed; then
-  bash ${DOTFILES_DIRECTORY}/node/setup.sh
+  echo "${USER}"
+  . ${DOTFILES_DIRECTORY}/node/setup.sh
   log_ok "Done!"
 else
   log_info "Skipped."
@@ -238,7 +239,7 @@ if is_osx; then
   log_header "Installing homebrew packages..."
   seek_confirmation
   if is_confirmed; then
-    brew bundle ${DOTFILES_DIRECTORY}/osx/homebrew/Brewfile
+    bash ${DOTFILES_DIRECTORY}/osx/homebrew/setup.sh
     brew doctor
     # using bash 4
     # This is where brew stores its binary symlinks
@@ -276,23 +277,6 @@ if is_osx; then
   fi
   echo ""
 fi
-
-
-# Install fonts with brew cask
-# ----------------------------------------------------------------------
-
-if is_osx; then
-  log_header "Installing fonts..."
-  seek_confirmation
-  if is_confirmed; then
-    brew bundle ${DOTFILES_DIRECTORY}/osx/homebrew/Caskfile
-    log_ok "done!"
-  else
-    log_info "skipped."
-  fi
-  echo ""
-fi
-
 
 # Set OS X system defaults
 # ----------------------------------------------------------------------

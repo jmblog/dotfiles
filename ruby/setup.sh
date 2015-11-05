@@ -2,11 +2,9 @@
 
 # Install stable version's ruby using rbenv
 if [[ ! "$(type -P rbenv)" ]]; then
-  git clone https://github.com/sstephenson/rbenv.git ${HOME}/.rbenv
-  git clone https://github.com/sstephenson/ruby-build.git ${HOME}/.rbenv/plugins/ruby-build
+  brew install rbenv ruby-build
 else
-  cd ${HOME}/.rbenv
-  git pull
+  brew upgrade rbenv ruby-build
 fi
 
 # include rbenv init
@@ -15,6 +13,7 @@ source "${HOME}/.bashrc"
 rbenv install 2.2.3
 rbenv rehash
 rbenv global 2.2.3
+eval "$(rbenv init -)"
 
 # Install ruby gems using bundler
 if [[ ! "$(type -P gem)" ]]; then
