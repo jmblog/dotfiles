@@ -11,3 +11,5 @@ fi
 
 alias hlj="pbpaste | pygmentize -f rtf -l javascript -O 'fontface=Menlo,style=tomorrownightbright' | pbcopy"
 alias hlc="pbpaste | pygmentize -f rtf -l css        -O 'fontface=Menlo,style=tomorrownightbright' | pbcopy"
+alias hlh="pbpaste | pygmentize -f rtf -l html       -O 'fontface=Menlo,style=tomorrownightbright' | pbcopy"
+
