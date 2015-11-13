@@ -1,12 +1,13 @@
+atom-csscomb@1.9.1
+atom-jade@0.3.0
 auto-indent@0.5.0
 autocomplete-paths@1.0.2
 compare-files@0.6.2
-cssfmt@1.2.0
-emmet@2.3.13
+cssfmt@1.2.1
+emmet@2.3.14
 file-icons@1.6.11
 github-web@1.1.0
 highlight-selected@0.10.1
-japanese-wrap@0.2.10
 language-slim@0.5.0
 pigments@0.18.1
 ruby-slim@0.2.0
