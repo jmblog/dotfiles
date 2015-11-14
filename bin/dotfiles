@@ -232,6 +232,19 @@ else
 fi
 echo ""
 
+# Install python packages
+# ----------------------------------------------------------------------
+
+log_header "Installing python packages..."
+seek_confirmation
+if is_confirmed; then
+  bash ${DOTFILES_DIRECTORY}/python/setup.sh
+  log_ok "Done!"
+else
+  log_info "Skipped."
+fi
+echo ""
+
 # Install homebrew formulaes (only with osx)
 # ----------------------------------------------------------------------
 
