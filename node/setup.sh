@@ -18,6 +18,7 @@ source "${HOME}/.nvm/nvm.sh"
 echo "${USER}"
 nvm install stable
 nvm use stable
+nvm alias default node
 
 # Install npm packages
 npm update -g npm
