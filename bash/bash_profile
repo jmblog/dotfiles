@@ -33,3 +33,8 @@ fi
 if  [ -f $HOME/.dotfiles/git/git-completion.bash ]; then
   source $HOME/.dotfiles/git/git-completion.bash
 fi
+
+if [ -f `brew --prefix`/etc/bash_completion.d/hub.bash_completion.sh ]; then
+  . `brew --prefix`/etc/bash_completion.d/hub.bash_completion.sh
+fi
+
