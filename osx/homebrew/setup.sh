@@ -27,6 +27,9 @@ brew install vim
 # Install htop
 brew install htop
 
+# Install hub
+brew install hub
+
 #----------------------
 # Install native apps
 #----------------------

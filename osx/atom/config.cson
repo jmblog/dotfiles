@@ -28,6 +28,7 @@
   "highlight-selected": {}
   "atom-color-highlight": {}
   pigments: {}
+  linter: {}
 ".slim.text":
   editor:
     preferredLineLength: 150

@@ -43,3 +43,5 @@ osx/atom/.npm
 osx/atom/.node-gyp
 osx/atom/packages
 osx/atom/.apm
+osx/atom/blob-store
+
