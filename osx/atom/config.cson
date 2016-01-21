@@ -1,34 +1,34 @@
 "*":
-  "exception-reporting":
-    userId: "9a0fc135-6b10-32a3-829f-6113bc15a030"
-  "release-notes":
-    viewedVersion: "0.95.0"
-  welcome:
-    showOnStartup: false
-  metrics:
-    userId: "b52998dda154e5f0664dc6f4bd03c798e49e2ea5"
-  editor:
-    fontFamily: "Inconsolata"
-    preferredLineLength: 150
-    invisibles: {}
-    showInvisibles: true
-    showIndentGuide: true
+  "atom-color-highlight": {}
+  "autocomplete-plus": {}
   core:
+    disabledPackages: [
+      "ruby-slim"
+    ]
+    projectHome: "/Users/jmblog/src"
     themes: [
       "atom-light-ui"
       "atom-light-syntax"
     ]
-    projectHome: "/Users/jmblog/src"
-    disabledPackages: [
-      "ruby-slim"
-    ]
-  "autocomplete-plus": {}
+  editor:
+    fontFamily: "Inconsolata"
+    invisibles: {}
+    preferredLineLength: 150
+    showIndentGuide: true
+    showInvisibles: true
   emmet: {}
-  "tree-view": {}
+  "exception-reporting":
+    userId: "9a0fc135-6b10-32a3-829f-6113bc15a030"
   "highlight-selected": {}
-  "atom-color-highlight": {}
-  pigments: {}
   linter: {}
+  metrics:
+    userId: "b52998dda154e5f0664dc6f4bd03c798e49e2ea5"
+  pigments: {}
+  "release-notes":
+    viewedVersion: "0.95.0"
+  "tree-view": {}
+  welcome:
+    showOnStartup: false
 ".slim.text":
   editor:
     preferredLineLength: 150
