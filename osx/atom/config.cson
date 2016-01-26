@@ -16,6 +16,8 @@
     preferredLineLength: 150
     showIndentGuide: true
     showInvisibles: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
   emmet: {}
   "exception-reporting":
     userId: "9a0fc135-6b10-32a3-829f-6113bc15a030"

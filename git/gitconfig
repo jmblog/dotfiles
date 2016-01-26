@@ -22,3 +22,7 @@
 
 [github]
   user = jmblog
+
+[commit]
+  template = /Users/jmblog/.gitmessage.txt
+

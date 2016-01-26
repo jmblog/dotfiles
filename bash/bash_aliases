@@ -5,6 +5,10 @@ alias ll="ls -l"
 alias tree='tree -F --dirsfirst -C'
 alias diff="colordiff"
 
+if type_exists gtime; then
+  alias time="gtime -f '%U user | %S system | %E elapsed | %P CPU'"
+fi
+
 if type_exists htop; then
   alias top="htop"
 fi
