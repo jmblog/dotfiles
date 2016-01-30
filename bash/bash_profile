@@ -29,6 +29,8 @@ fi
 # Init nvm
 . ~/.nvm/nvm.sh
 
+nvm use stable
+
 # Git completion
 if  [ -f $HOME/.dotfiles/git/git-completion.bash ]; then
   source $HOME/.dotfiles/git/git-completion.bash
