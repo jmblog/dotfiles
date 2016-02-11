@@ -22,4 +22,5 @@ nvm alias default node
 
 # Install npm packages
 npm update -g npm
+npm install -g gulp-cli
 
