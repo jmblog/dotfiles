@@ -30,6 +30,9 @@ brew install htop
 # Install hub
 brew install hub
 
+# Install gpg
+brew install gpg 
+
 #----------------------
 # Install native apps
 #----------------------
