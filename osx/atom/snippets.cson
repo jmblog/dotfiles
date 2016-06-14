@@ -92,6 +92,25 @@
       export default ${1};
 
     """
+  'React ES6 Functional Component with CSS Modules':
+    'prefix': 'rfunccssmodules'
+    'body': """
+      import React, { PropTypes } from 'react';
+      import cssModules from 'react-css-modules';
+      import styles from './index.css';
+
+      const ${1} = (props) => {
+        return (
+          ${2:<div>${1}</div>}
+        );
+      };
+
+      ${1}.propTypes = {
+      };
+
+      export default cssModules(${1}, styles);
+
+    """
   'React ES6 bind method to this':
     'prefix': 'rbm',
     'body': """
