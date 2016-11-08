@@ -25,5 +25,4 @@
 
 [commit]
   template = /Users/jmblog/.gitmessage.txt
-  gpgsign = true
 
