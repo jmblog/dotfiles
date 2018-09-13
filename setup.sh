@@ -27,6 +27,21 @@ if [[ ! $(type -P brew) ]]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
+# Check for git
+if [[ ! $(type -P git) ]]; then
+  log_header "Installing git..."
+  brew install git
+fi
+
+
+# Clone repo
+# ----------------------------------------------------------------------
+
+if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
+  log_header "Downloading dotfiles..."
+  git clone --recursive git@github.com:jmblog/dotfiles.git ${DOTFILES_DIRECTORY}
+  cd ${DOTFILES_DIRECTORY}
+fi
 
 # Setup git
 # ----------------------------------------------------------------------

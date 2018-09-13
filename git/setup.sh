@@ -2,7 +2,8 @@
 
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 
-brew install git hub
+# It is expected that git is already installed
+brew install hub
 
 ln -fs "${DOTFILES_DIRECTORY}/git/gitattributes" "${HOME}/.gitattributes"
 ln -fs "${DOTFILES_DIRECTORY}/git/gitignore" "${HOME}/.gitignore"
