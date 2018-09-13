@@ -1,6 +1,0 @@
-[submodule "vim/bundle/neobundle.vim"]
-	path = vim/bundle/neobundle.vim
-	url = https://github.com/Shougo/neobundle.vim
-[submodule "bash/bash-completion"]
-	path = bash/bash-completion
-	url = git@github.com:GArik/bash-completion.git

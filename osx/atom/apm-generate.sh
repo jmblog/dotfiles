@@ -1,1 +1,0 @@
-apm list -bi > "${HOME}/.dotfiles/osx/atom/Atomfile"

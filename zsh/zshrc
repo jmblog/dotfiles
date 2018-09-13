@@ -1,0 +1,94 @@
+# Compile .zshrc automatically
+# ----------------------------------------------------------------------
+
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+   zcompile ~/.zshrc
+fi
+
+# Setup pure prompt
+# ----------------------------------------------------------------------
+
+autoload -U promptinit; promptinit
+prompt pure
+
+# Set path
+# ----------------------------------------------------------------------
+
+path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/local/opt/coreutils/libexec/gnubin(N-/) /usr/local/opt/openssl/bin(N-/) $path)
+
+# Set alias
+# ----------------------------------------------------------------------
+
+alias ls="ls --color=auto -AF"
+alias ll="ls -l"
+alias tree='tree -F --dirsfirst -C'
+alias diff="colordiff -s"
+
+# Exports
+# ----------------------------------------------------------------------
+
+# Japanese and use UTF-8
+export LANG="ja_JP.UTF-8"
+
+# Use vim as the default editor
+export EDITOR="vim"
+
+# Ignore duplicate commands in the history
+export HISTCONTROL=ignoreboth:erasedups
+
+# Increase the maximum number of lines contained in the history file
+# (default is 500)
+export HISTFILESIZE=10000
+
+# Increase the maximum number of commands to remember
+# (default is 500)
+export HISTSIZE=10000
+
+# Make some commands not show up in history
+export HISTIGNORE="ls:ls *:ll:ll *;cd:cd -:pwd:exit:date:* --help:history"
+
+# Unset default LS_COLORS
+unset LS_COLORS
+
+# nvm
+# ----------------------------------------------------------------------
+
+# Lazy load nvm
+# https://gist.github.com/fl0w/07ce79bd44788f647deab307c94d6922#gistcomment-2650045
+NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+NODE_GLOBALS+=("node")
+NODE_GLOBALS+=("nvm")
+
+# Lazy-loading nvm + npm on node globals call
+load_nvm () {
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+
+# Making node global trigger the lazy loading
+for cmd in "${NODE_GLOBALS[@]}"; do
+  eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
+done
+
+
+# zsh-autosuggestions
+# ----------------------------------------------------------------------
+
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-autocompletions
+# ----------------------------------------------------------------------
+
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+
+# hub, git-completion, hub-completion
+# ----------------------------------------------------------------------
+
+eval "$(hub alias -s)"
+fpath=(~/.zsh/completion $fpath)
+autoload -U compinit && compinit
+
+# case insensitive
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'

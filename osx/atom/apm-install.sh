@@ -1,1 +1,0 @@
-apm install --packages-file "${HOME}/.dotfiles/osx/atom/Atomfile"
