@@ -73,6 +73,12 @@ nvm use node
 
 npm update -g npm
 
+# Setup ruby
+# ----------------------------------------------------------------------
+
+log_header "Installing ruby..."
+bash ./ruby/setup.sh
+
 
 # Install macOS apps
 # ----------------------------------------------------------------------

@@ -71,6 +71,12 @@ for cmd in "${NODE_GLOBALS[@]}"; do
   eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
 done
 
+# ruby
+# ----------------------------------------------------------------------
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
+
 
 # zsh-autosuggestions
 # ----------------------------------------------------------------------
