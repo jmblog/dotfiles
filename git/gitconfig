@@ -23,6 +23,11 @@
 [github]
   user = jmblog
 
-[commit]
-  template = /Users/jmblog/.gitmessage.txt
+[hub]
+  protocol = https
 
+[credential]
+  helper = osxkeychain
+
+[rebase]
+  autosquash = true
