@@ -75,7 +75,7 @@ done
 # ----------------------------------------------------------------------
 
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
+eval "$(rbenv init - --no-rehash)" # add --no-rehash flag to stop rehashing
 
 
 # zsh-autosuggestions
@@ -98,3 +98,11 @@ autoload -U compinit && compinit
 
 # case insensitive
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'
+
+
+# To profiling zsh
+# ----------------------------------------------------------------------
+
+#if type zprof > /dev/null 2>&1; then
+#  zprof | less
+#fi
