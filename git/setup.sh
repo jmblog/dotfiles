@@ -11,7 +11,7 @@ ln -fs "${DOTFILES_DIRECTORY}/git/gitconfig" "${HOME}/.gitconfig"
 
 # Install diff-highlight
 mkdir ${HOME}/bin
-curl https://raw.githubusercontent.com/git/git/master/contrib/diff-highlight/diff-highlight > ~/bin/diff-highlight && chmod +x ~/bin/diff-highlight
+cp /usr/local/share/git-core/contrib/diff-highlight/diff-highlight ~/bin
 
 # Install completions
 # https://blog.qnyp.com/2013/05/14/zsh-git-completion/
