@@ -13,5 +13,6 @@ brew cask install notion
 brew cask install sketch
 brew cask install simplecap
 brew cask install spotify
+brew cask install sync
 brew cask install visual-studio-code
 brew cask install zoomus
