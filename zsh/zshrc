@@ -50,6 +50,12 @@ export HISTIGNORE="ls:ls *:ll:ll *;cd:cd -:pwd:exit:date:* --help:history"
 # Unset default LS_COLORS
 unset LS_COLORS
 
+# Share history in multiple shell
+# ----------------------------------------------------------------------
+
+setopt share_history
+
+
 # nvm
 # ----------------------------------------------------------------------
 
