@@ -11,6 +11,8 @@
   br = branch
   ci = commit
   delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+  cleanup = !git fetch --all --prune && git delete-merged-branches
+  push-f = !git push --force-with-lease
 
 [pager]
   log = diff-highlight | less -r
