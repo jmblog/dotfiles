@@ -72,6 +72,7 @@ nvm install node
 nvm use node
 
 npm update -g npm
+npm install -g typescript
 npm install -g yarn
 
 # Setup ruby
