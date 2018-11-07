@@ -2,7 +2,7 @@
 # ----------------------------------------------------------------------
 
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
-   zcompile ~/.zshrc
+  zcompile ~/.zshrc
 fi
 
 # Setup pure prompt
@@ -33,26 +33,18 @@ export LANG="ja_JP.UTF-8"
 # Use vim as the default editor
 export EDITOR="vim"
 
-# Ignore duplicate commands in the history
-export HISTCONTROL=ignoreboth:erasedups
-
-# Increase the maximum number of lines contained in the history file
-# (default is 500)
-export HISTFILESIZE=10000
-
-# Increase the maximum number of commands to remember
-# (default is 500)
-export HISTSIZE=10000
-
-# Make some commands not show up in history
-export HISTIGNORE="ls:ls *:ll:ll *;cd:cd -:pwd:exit:date:* --help:history"
-
 # Unset default LS_COLORS
 unset LS_COLORS
 
-# Share history in multiple shell
-# https://qiita.com/syui/items/c1a1567b2b76051f50c4
+# History
 # ----------------------------------------------------------------------
+
+HISTFILE=${HOME}/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+# Ignore some commands
+HISTORY_IGNORE="(ls|ll|pwd|exit)"
 
 # ヒストリに追加されるコマンド行が古いものと同じなら古いものを削除
 setopt hist_ignore_all_dups
@@ -64,21 +56,25 @@ setopt hist_ignore_space
 setopt hist_verify
 
 # 余分な空白は詰めて記録
-setopt hist_reduce_blanks  
+setopt hist_reduce_blanks
 
-# 古いコマンドと同じものは無視 
+# 古いコマンドと同じものは無視
 setopt hist_save_no_dups
 
 # historyコマンドは履歴に登録しない
 setopt hist_no_store
 
-# 補完時にヒストリを自動的に展開         
+# 補完時にヒストリを自動的に展開
 setopt hist_expand
+
+# 履歴を追加
+setopt append_history
+
+# 複数シェル間で履歴を共有
+setopt share_history
 
 # 履歴をインクリメンタルに追加
 setopt inc_append_history
-
-setopt share_history
 
 # nvm
 # ----------------------------------------------------------------------
