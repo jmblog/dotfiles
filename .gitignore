@@ -1,3 +1,4 @@
 .DS_Store
 
 zsh/pure/*.zsh
+.netrwhist
