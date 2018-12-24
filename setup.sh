@@ -94,6 +94,11 @@ npm install -g yarn
 log_header "Installing ruby..."
 bash ./ruby/setup.sh
 
+# Install macOS packages
+# ----------------------------------------------------------------------
+
+log_header "Installing macOS apps..."
+bash ./homebrew/brew.sh
 
 # Install macOS apps
 # ----------------------------------------------------------------------
