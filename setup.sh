@@ -15,12 +15,6 @@ function log_info()    { echo -e "\x1B[33m==> \x1B[39m$@"; }
 # Check dependencies
 # ----------------------------------------------------------------------
 
-# Check for gcc
-if [[ ! $(type -P gcc) ]]; then
-  log_fail "The XCode Command Line Tools must be installed first.\n"
-  log_fail "Run \`xcode-select --install\` to install them."
-fi
-
 # Check for homebrew
 if [[ ! $(type -P brew) ]]; then
   log_header "Installing Homebrew..."
@@ -33,6 +27,25 @@ if [[ ! $(type -P git) ]]; then
   brew install git
 fi
 
+# Preparation
+# ----------------------------------------------------------------------
+
+# Ask for the administrator password upfront
+echo ""
+sudo -v -p "Password for sudo: "
+echo ""
+
+# Keep-alive: update existing `sudo` time stamp until `dotfiles` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Check that the connection to the github server
+ssh -vT git@github.com >/dev/null 2>&1
+if [ $? -ne 1 ]; then
+  log_fail "git@github.com: Permission denied (publickey)."
+  log_fail "Please generate a SSH key and associate it with GitHub."
+  log_fail "See https://help.github.com/articles/error-permission-denied-publickey/ for more details."
+  exit 1
+fi
 
 # Clone repo
 # ----------------------------------------------------------------------
@@ -43,78 +56,78 @@ if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
   cd ${DOTFILES_DIRECTORY}
 fi
 
-# Setup git
-# ----------------------------------------------------------------------
+# # Setup git
+# # ----------------------------------------------------------------------
 
-log_header "Setting git..."
-bash ./git/setup.sh
+# log_header "Setting git..."
+# bash ./git/setup.sh
 
-# Setup zsh
-# ----------------------------------------------------------------------
+# # Setup zsh
+# # ----------------------------------------------------------------------
 
-log_header "Setting zsh..."
-bash ./zsh/setup.sh
+# log_header "Setting zsh..."
+# bash ./zsh/setup.sh
 
-# Setup vim
-# ----------------------------------------------------------------------
+# # Setup vim
+# # ----------------------------------------------------------------------
 
-log_header "Setting vim..."
-ln -fs "${DOTFILES_DIRECTORY}/vim/vimrc" "${HOME}/.vimrc"
-ln -fs "${DOTFILES_DIRECTORY}/vim" "${HOME}/.vim"
-
-
-# Setup node
-# ----------------------------------------------------------------------
-
-log_header "Installing the latest node..."
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-nvm install node
-nvm use node
-
-npm update -g npm
-npm install -g typescript
-npm install -g yarn
-
-# Setup ruby
-# ----------------------------------------------------------------------
-
-log_header "Installing ruby..."
-bash ./ruby/setup.sh
+# log_header "Setting vim..."
+# ln -fs "${DOTFILES_DIRECTORY}/vim/vimrc" "${HOME}/.vimrc"
+# ln -fs "${DOTFILES_DIRECTORY}/vim" "${HOME}/.vim"
 
 
-# Install macOS apps
-# ----------------------------------------------------------------------
+# # Setup node
+# # ----------------------------------------------------------------------
 
-log_header "Installing macOS apps..."
-bash ./homebrew/cask.sh
+# log_header "Installing the latest node..."
+# curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+# nvm install node
+# nvm use node
 
+# npm update -g npm
+# npm install -g typescript
+# npm install -g yarn
 
-# Install fonts
-# ----------------------------------------------------------------------
+# # Setup ruby
+# # ----------------------------------------------------------------------
 
-log_header "Installing fonts..."
-bash ./homebrew/font.sh
-log_info "Download San Fransisco font from https://developer.apple.com/fonts/ manually."
-
-
-# Setup item2
-# http://stratus3d.com/blog/2015/02/28/sync-iterm2-profile-with-dotfiles-repository/
-# ----------------------------------------------------------------------
-
-log_header "Setting iterm2..."
-# Specify the preferences directory
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.dotfiles/iterm2"
-# Tell iTerm2 to use the custom preferences in the directory
-defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
-
-# Set macOS system defaults
-# ----------------------------------------------------------------------
-
-log_header "Setting macOS system defaults..."
-bash ./macosdefaults.sh
+# log_header "Installing ruby..."
+# bash ./ruby/setup.sh
 
 
-# Cleanup
-# ----------------------------------------------------------------------
+# # Install macOS apps
+# # ----------------------------------------------------------------------
 
-brew cleanup
+# log_header "Installing macOS apps..."
+# bash ./homebrew/cask.sh
+
+
+# # Install fonts
+# # ----------------------------------------------------------------------
+
+# log_header "Installing fonts..."
+# bash ./homebrew/font.sh
+# log_info "Download San Fransisco font from https://developer.apple.com/fonts/ manually."
+
+
+# # Setup item2
+# # http://stratus3d.com/blog/2015/02/28/sync-iterm2-profile-with-dotfiles-repository/
+# # ----------------------------------------------------------------------
+
+# log_header "Setting iterm2..."
+# # Specify the preferences directory
+# defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.dotfiles/iterm2"
+# # Tell iTerm2 to use the custom preferences in the directory
+# defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+
+# # Set macOS system defaults
+# # ----------------------------------------------------------------------
+
+# log_header "Setting macOS system defaults..."
+# bash ./macosdefaults.sh
+
+
+# # Cleanup
+# # ----------------------------------------------------------------------
+
+# brew cleanup
