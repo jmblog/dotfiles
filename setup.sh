@@ -56,78 +56,79 @@ if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
   cd ${DOTFILES_DIRECTORY}
 fi
 
-# # Setup git
-# # ----------------------------------------------------------------------
+# Setup git
+# ----------------------------------------------------------------------
 
-# log_header "Setting git..."
-# bash ./git/setup.sh
+log_header "Setting git..."
+bash ./git/setup.sh
 
-# # Setup zsh
-# # ----------------------------------------------------------------------
+# Setup zsh
+# ----------------------------------------------------------------------
 
-# log_header "Setting zsh..."
-# bash ./zsh/setup.sh
+log_header "Setting zsh..."
+bash ./zsh/setup.sh
 
-# # Setup vim
-# # ----------------------------------------------------------------------
+# Setup vim
+# ----------------------------------------------------------------------
 
-# log_header "Setting vim..."
-# ln -fs "${DOTFILES_DIRECTORY}/vim/vimrc" "${HOME}/.vimrc"
-# ln -fs "${DOTFILES_DIRECTORY}/vim" "${HOME}/.vim"
-
-
-# # Setup node
-# # ----------------------------------------------------------------------
-
-# log_header "Installing the latest node..."
-# curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-# nvm install node
-# nvm use node
-
-# npm update -g npm
-# npm install -g typescript
-# npm install -g yarn
-
-# # Setup ruby
-# # ----------------------------------------------------------------------
-
-# log_header "Installing ruby..."
-# bash ./ruby/setup.sh
+log_header "Setting vim..."
+ln -fs "${DOTFILES_DIRECTORY}/vim/vimrc" "${HOME}/.vimrc"
+ln -fs "${DOTFILES_DIRECTORY}/vim" "${HOME}/.vim"
 
 
-# # Install macOS apps
-# # ----------------------------------------------------------------------
+# Setup node
+# ----------------------------------------------------------------------
 
-# log_header "Installing macOS apps..."
-# bash ./homebrew/cask.sh
+log_header "Installing the latest node..."
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+nvm install node
+nvm use node
 
+npm update -g npm
+npm install -g typescript
+npm install -g yarn
 
-# # Install fonts
-# # ----------------------------------------------------------------------
+# Setup ruby
+# ----------------------------------------------------------------------
 
-# log_header "Installing fonts..."
-# bash ./homebrew/font.sh
-# log_info "Download San Fransisco font from https://developer.apple.com/fonts/ manually."
-
-
-# # Setup item2
-# # http://stratus3d.com/blog/2015/02/28/sync-iterm2-profile-with-dotfiles-repository/
-# # ----------------------------------------------------------------------
-
-# log_header "Setting iterm2..."
-# # Specify the preferences directory
-# defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.dotfiles/iterm2"
-# # Tell iTerm2 to use the custom preferences in the directory
-# defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
-
-# # Set macOS system defaults
-# # ----------------------------------------------------------------------
-
-# log_header "Setting macOS system defaults..."
-# bash ./macosdefaults.sh
+log_header "Installing ruby..."
+bash ./ruby/setup.sh
 
 
-# # Cleanup
-# # ----------------------------------------------------------------------
+# Install macOS apps
+# ----------------------------------------------------------------------
 
-# brew cleanup
+log_header "Installing macOS apps..."
+bash ./homebrew/cask.sh
+log_info "Some apps should be installed manually..."
+bash ./applist.sh
+
+# Install fonts
+# ----------------------------------------------------------------------
+
+log_header "Installing fonts..."
+bash ./homebrew/font.sh
+log_info "Download San Fransisco font from https://developer.apple.com/fonts/ manually."
+
+
+# Setup item2
+# http://stratus3d.com/blog/2015/02/28/sync-iterm2-profile-with-dotfiles-repository/
+# ----------------------------------------------------------------------
+
+log_header "Setting iterm2..."
+# Specify the preferences directory
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.dotfiles/iterm2"
+# Tell iTerm2 to use the custom preferences in the directory
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+
+# Set macOS system defaults
+# ----------------------------------------------------------------------
+
+log_header "Setting macOS system defaults..."
+bash ./macosdefaults.sh
+
+
+# Cleanup
+# ----------------------------------------------------------------------
+
+brew cleanup

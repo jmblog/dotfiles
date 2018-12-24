@@ -8,7 +8,9 @@ brew cask install grammarly
 brew cask install imageoptim
 brew cask install iterm2
 brew cask install itsycal
+brew cask install kindle
 brew cask install licecap
+brew cask install muzzle
 brew cask install notion
 brew cask install sketch
 brew cask install simplecap
