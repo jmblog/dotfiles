@@ -15,12 +15,6 @@ function log_info()    { echo -e "\x1B[33m==> \x1B[39m$@"; }
 # Check dependencies
 # ----------------------------------------------------------------------
 
-# Check for gcc
-if [[ ! $(type -P gcc) ]]; then
-  log_fail "The XCode Command Line Tools must be installed first.\n"
-  log_fail "Run \`xcode-select --install\` to install them."
-fi
-
 # Check for homebrew
 if [[ ! $(type -P brew) ]]; then
   log_header "Installing Homebrew..."
@@ -33,6 +27,25 @@ if [[ ! $(type -P git) ]]; then
   brew install git
 fi
 
+# Preparation
+# ----------------------------------------------------------------------
+
+# Ask for the administrator password upfront
+echo ""
+sudo -v -p "Password for sudo: "
+echo ""
+
+# Keep-alive: update existing `sudo` time stamp until `dotfiles` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Check that the connection to the github server
+ssh -vT git@github.com >/dev/null 2>&1
+if [ $? -ne 1 ]; then
+  log_fail "git@github.com: Permission denied (publickey)."
+  log_fail "Please generate a SSH key and associate it with GitHub."
+  log_fail "See https://help.github.com/articles/error-permission-denied-publickey/ for more details."
+  exit 1
+fi
 
 # Clone repo
 # ----------------------------------------------------------------------
@@ -87,7 +100,8 @@ bash ./ruby/setup.sh
 
 log_header "Installing macOS apps..."
 bash ./homebrew/cask.sh
-
+log_info "Some apps should be installed manually..."
+bash ./applist.sh
 
 # Install fonts
 # ----------------------------------------------------------------------
