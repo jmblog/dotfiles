@@ -21,22 +21,11 @@ if [[ ! $(type -P brew) ]]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# Check for git
-if [[ ! $(type -P git) ]]; then
-  log_header "Installing git..."
-  brew install git
-fi
 
 # Preparation
 # ----------------------------------------------------------------------
 
-# Ask for the administrator password upfront
-echo ""
-sudo -v -p "Password for sudo: "
-echo ""
-
-# Keep-alive: update existing `sudo` time stamp until `dotfiles` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+brew install git
 
 # Check that the connection to the github server
 ssh -vT git@github.com >/dev/null 2>&1
@@ -84,9 +73,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 nvm install node
 nvm use node
 
-npm update -g npm
-npm install -g typescript
-npm install -g yarn
+bash ./node/npm.sh
 
 # Setup ruby
 # ----------------------------------------------------------------------
