@@ -13,6 +13,7 @@
   delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
   cleanup = !git fetch --all --prune && git delete-merged-branches
   push-f = !git push --force-with-lease
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
 
 [pager]
   log = diff-highlight | less -r
