@@ -38,3 +38,5 @@
 	insteadOf = https://github.com/
 [core]
 	commentChar = %
+[rerere]
+	enabled = true
