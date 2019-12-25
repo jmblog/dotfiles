@@ -38,5 +38,6 @@
 	insteadOf = https://github.com/
 [core]
 	commentChar = %
+  ignorecase = false
 [rerere]
 	enabled = true
