@@ -110,6 +110,9 @@ autoload -U compinit && compinit
 # case insensitive
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'
 
+# Ubie Eng-Tools
+# ----------------------------------------------------------------------
+export PATH="$HOME/Projects/ubie-inc/eng-tools:$PATH"
 
 # To profiling zsh
 # ----------------------------------------------------------------------
