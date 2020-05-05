@@ -17,8 +17,8 @@ function log_info()    { echo -e "\x1B[33m==> \x1B[39m$@"; }
 
 # Check for homebrew
 if [[ ! $(type -P brew) ]]; then
-  log_header "Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    log_header "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
 
@@ -30,19 +30,19 @@ brew install git
 # Check that the connection to the github server
 ssh -vT git@github.com >/dev/null 2>&1
 if [ $? -ne 1 ]; then
-  log_fail "git@github.com: Permission denied (publickey)."
-  log_fail "Please generate a SSH key and associate it with GitHub."
-  log_fail "See https://help.github.com/articles/error-permission-denied-publickey/ for more details."
-  exit 1
+    log_fail "git@github.com: Permission denied (publickey)."
+    log_fail "Please generate a SSH key and associate it with GitHub."
+    log_fail "See https://help.github.com/articles/error-permission-denied-publickey/ for more details."
+    exit 1
 fi
 
 # Clone repo
 # ----------------------------------------------------------------------
 
 if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
-  log_header "Downloading dotfiles..."
-  git clone --recursive git@github.com:jmblog/dotfiles.git ${DOTFILES_DIRECTORY}
-  cd ${DOTFILES_DIRECTORY}
+    log_header "Downloading dotfiles..."
+    git clone --recursive git@github.com:jmblog/dotfiles.git ${DOTFILES_DIRECTORY}
+    cd ${DOTFILES_DIRECTORY}
 fi
 
 # Setup git
@@ -119,6 +119,13 @@ defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 log_header "Setting macOS system defaults..."
 bash ./macosdefaults.sh
 
+
+# Create some directories
+# ----------------------------------------------------------------------
+
+log_header "Create my regular directories..."
+mkdir ~/Projects
+mkdir ~/Sandbox
 
 # Cleanup
 # ----------------------------------------------------------------------
