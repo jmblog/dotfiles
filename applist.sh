@@ -16,7 +16,7 @@ open https://editaro.com/
 #open https://framer.com/download/
 
 # Kap
-open https://kap-updates.now.sh/download
+open https://getkap.co/download
 
 # Karabiner Elements
 open https://pqrs.org/osx/karabiner/
