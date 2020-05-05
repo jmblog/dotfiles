@@ -18,7 +18,7 @@ function log_info()    { echo -e "\x1B[33m==> \x1B[39m$@"; }
 # Check for homebrew
 if [[ ! $(type -P brew) ]]; then
   log_header "Installing Homebrew..."
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
 
