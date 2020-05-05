@@ -13,7 +13,7 @@ open https://www.docker.com/products/docker-desktop
 open https://editaro.com/
 
 # Framer X
-open https://framer.com/download/
+#open https://framer.com/download/
 
 # Kap
 open https://kap-updates.now.sh/download
@@ -22,16 +22,29 @@ open https://kap-updates.now.sh/download
 open https://pqrs.org/osx/karabiner/
 
 # Krisp
-open https://krisp.ai/download.html
+#open https://krisp.ai/download.html
+
+# Microsoft Office
+open https://www.office.com/
 
 # Sequel Pro
-open https://sequelpro.com/download#auto-start
+#open https://sequelpro.com/download#auto-start
 
 # Slack
 open https://slack.com/intl/ja-jp/downloads/osx
 
 
 # Get from App Store
+#
+# Dato
+# Keynote
+# Battery Indicator
+# Unsplash Wallpapers
+# Spark
+# CotEditor
+# Monosnap
+# LINE
+# PopClip
 # ----------------------------------------------------------------------
 open -a "App Store"
 
