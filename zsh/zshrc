@@ -2,7 +2,7 @@
 # ----------------------------------------------------------------------
 
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
-  zcompile ~/.zshrc
+    zcompile ~/.zshrc
 fi
 
 # Setup pure prompt
@@ -121,11 +121,11 @@ export PATH="$HOME/Projects/ubie-inc/eng-tools:$PATH"
 #  zprof | less
 #fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jimbo/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jimbo/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/jimbo/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jimbo/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="/usr/local/sbin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/bin/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/path.zsh.inc"; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/bin/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/completion.zsh.inc"; fi
