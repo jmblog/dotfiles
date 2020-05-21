@@ -5,6 +5,13 @@ if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
 fi
 
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+    
+    autoload -Uz compinit
+    compinit
+fi
+
 # Setup pure prompt
 # ----------------------------------------------------------------------
 
@@ -104,7 +111,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # ----------------------------------------------------------------------
 
 eval "$(hub alias -s)"
-fpath=(~/.zsh/completion $fpath)
+# fpath=(~/.zsh/completions $fpath)
 autoload -U compinit && compinit
 
 # case insensitive
