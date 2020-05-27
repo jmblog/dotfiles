@@ -107,12 +107,12 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 
-# hub, git-completion, hub-completion
+# git-completion
 # ----------------------------------------------------------------------
 
-eval "$(hub alias -s)"
 # fpath=(~/.zsh/completions $fpath)
-autoload -U compinit && compinit
+autoload -U compinit
+compinit
 
 # case insensitive
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'

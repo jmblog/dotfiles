@@ -10,3 +10,4 @@ brew install simplehttp2server
 brew install svn # needs to install some fonts with homebrew
 brew install tree
 brew install wget
+brew install github/gh/gh
