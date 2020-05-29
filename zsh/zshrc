@@ -107,9 +107,10 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 
-# git-completion
+# hub, git-completion, hub-completion
 # ----------------------------------------------------------------------
 
+eval "$(hub alias -s)"
 # fpath=(~/.zsh/completions $fpath)
 autoload -U compinit
 compinit

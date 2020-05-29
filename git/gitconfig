@@ -26,6 +26,9 @@
 [github]
   user = jmblog
 
+[hub]	
+  protocol = https	
+
 [credential]
   helper = osxkeychain
 
