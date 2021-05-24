@@ -103,7 +103,6 @@ load-nvmrc() {
     elif [ "$nvmrc_node_version" != "$node_version" ]; then
       echo "current node version: $node_version"
       nvm use
-      nvm reinstall-packages "$node_version"
     fi
   elif [ "$node_version" != "$(nvm version default)" ]; then
     echo "Reverting to nvm default version"
