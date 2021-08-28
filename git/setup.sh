@@ -2,8 +2,10 @@
 
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 
-# It is expected that git is already installed
-brew install hub
+# Install GitHub CLI
+brew install gh
+gh completion -s zsh > /usr/local/share/zsh/site-functions/_gh
+
 
 ln -fs "${DOTFILES_DIRECTORY}/git/gitattributes" "${HOME}/.gitattributes"
 ln -fs "${DOTFILES_DIRECTORY}/git/gitignore" "${HOME}/.gitignore"

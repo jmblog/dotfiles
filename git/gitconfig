@@ -1,10 +1,6 @@
 [user]
   name = Yoshihide Jimbo
   email = yjimbo@gmail.com
-
-[color]
-  ui = true
-
 [alias]
   st = status
   co = checkout
@@ -14,24 +10,16 @@
   cleanup = !git fetch --all --prune && git delete-merged-branches
   push-f = !git push --force-with-lease
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
-
 [pager]
   log = diff-highlight | less -r
   show = diff-highlight | less -r
   diff = diff-highlight | less -r
-
 [push]
   default = current
-
 [github]
   user = jmblog
-
-[hub]	
-  protocol = https	
-
 [credential]
   helper = osxkeychain
-
 [rebase]
   autosquash = true
 [url "git@github.com:"]
@@ -39,6 +27,7 @@
 [core]
 	commentChar = %
   ignorecase = false
+	autocrlf = input
 [rerere]
 	enabled = true
 [pull]
