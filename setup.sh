@@ -18,7 +18,7 @@ function log_info()    { echo -e "\x1B[33m==> \x1B[39m$@"; }
 # Check for homebrew
 if [[ ! $(type -P brew) ]]; then
     log_header "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 
@@ -69,7 +69,7 @@ ln -fs "${DOTFILES_DIRECTORY}/vim" "${HOME}/.vim"
 # ----------------------------------------------------------------------
 
 log_header "Installing the latest node..."
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 nvm install node --reinstall-packages-from=node
 nvm use node
 
@@ -90,10 +90,10 @@ bash ./homebrew/brew.sh
 # Install macOS apps
 # ----------------------------------------------------------------------
 
-log_header "Installing macOS apps..."
-bash ./homebrew/cask.sh
-log_info "Some apps should be installed manually..."
-bash ./applist.sh
+#log_header "Installing macOS apps..."
+#bash ./homebrew/cask.sh
+#log_info "Some apps should be installed manually..."
+#bash ./applist.sh
 
 # Install fonts
 # ----------------------------------------------------------------------
@@ -116,14 +116,14 @@ defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 # Set macOS system defaults
 # ----------------------------------------------------------------------
 
-log_header "Setting macOS system defaults..."
-bash ./macosdefaults.sh
+# log_header "Setting macOS system defaults..."
+# bash ./macosdefaults.sh
 
 
 # Create some directories
 # ----------------------------------------------------------------------
 
-log_header "Create my regular directories..."
+log_header "Create the regular directories..."
 mkdir ~/Projects
 mkdir ~/Sandbox
 
