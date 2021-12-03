@@ -23,12 +23,12 @@
 [rebase]
   autosquash = true
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
 [core]
-	commentChar = %
+  commentChar = %
   ignorecase = false
-	autocrlf = input
+  autocrlf = input
 [rerere]
-	enabled = true
+  enabled = true
 [pull]
-	rebase = false
+  rebase = false
