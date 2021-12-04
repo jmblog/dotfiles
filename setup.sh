@@ -70,7 +70,7 @@ ln -fs "${DOTFILES_DIRECTORY}/vim" "${HOME}/.vim"
 
 log_header "Installing the latest node..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-nvm install node --reinstall-packages-from=node
+nvm install node
 nvm use node
 
 bash ./node/npm.sh
