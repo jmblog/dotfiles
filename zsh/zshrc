@@ -122,13 +122,17 @@ eval "$(rbenv init - --no-rehash)" # add --no-rehash flag to stop rehashing
 # zsh-autosuggestions
 # ----------------------------------------------------------------------
 
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-autocompletions
 # ----------------------------------------------------------------------
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
+  autoload -Uz compinit
+  compinit
+fi
 
 # git-completion
 # ----------------------------------------------------------------------
@@ -145,6 +149,8 @@ compinit
 
 # case insensitive
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'
+
+rm -f ~/.zcompdump; compinit
 
 # Ubie Eng-Tools
 # ----------------------------------------------------------------------
