@@ -20,4 +20,4 @@ brew install --cask spotify
 brew install --cask sync
 brew install --cask tandem
 brew install --cask visual-studio-code
-brew install --cask zoomus
+brew install --cask zoom
