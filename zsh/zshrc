@@ -123,27 +123,27 @@ eval "$(rbenv init - --no-rehash)" # add --no-rehash flag to stop rehashing
 # zsh-autosuggestions
 # ----------------------------------------------------------------------
 
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-autocompletions
 # ----------------------------------------------------------------------
 
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    
+    autoload -Uz compinit
+    compinit
 fi
 
 # git-completion
 # ----------------------------------------------------------------------
 
-fpath=(/usr/local/share/zsh/site-functions $fpath)
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
 # gh-completion (see git/setup.sh)
 # ----------------------------------------------------------------------
 
-fpath=(/usr/local/share/zsh/site-functions/_gh $fpath)
+fpath=($(brew --prefix)/share/zsh/site-functions/_gh $fpath)
 
 autoload -U compinit
 compinit
@@ -153,6 +153,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'
 
 # Ubie Eng-Tools
 # ----------------------------------------------------------------------
+export PATH="$HOME/.ubie-bin:$PATH"
 export PATH="$HOME/Projects/ubie-inc/eng-tools:$PATH"
 export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Projects/ubie-inc/eng-tools/local-sa-key.json"
 
@@ -165,12 +166,12 @@ export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Projects/ubie-inc/eng-tools/local-s
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="/usr/local/sbin:$PATH"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/bin/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/path.zsh.inc"; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/bin/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/completion.zsh.inc"; fi
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jimbo/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jimbo/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jimbo/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jimbo/google-cloud-sdk/completion.zsh.inc'; fi
