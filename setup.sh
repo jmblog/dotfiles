@@ -75,12 +75,6 @@ nvm use node
 
 bash ./node/npm.sh
 
-# Setup ruby
-# ----------------------------------------------------------------------
-
-log_header "Installing ruby..."
-bash ./ruby/setup.sh
-
 # Install macOS packages
 # ----------------------------------------------------------------------
 
