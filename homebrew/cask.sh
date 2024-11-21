@@ -1,23 +1,17 @@
-brew install --cask alfred
-brew install --cask appcleaner
-brew install --cask choosy
-brew install --cask coteditor
-brew install --cask dropbox
-brew install --cask discord
-brew install --cask figma
-brew install --cask firefox
-brew install --cask google-chrome
-brew install --cask google-japanese-ime
-brew install --cask grammarly
-brew install --cask imageoptim
-brew install --cask iterm2
-brew install --cask kindle
-brew install --cask miro
-brew install --cask muzzle
-brew install --cask notion
-brew install --cask sidenotes
-brew install --cask spotify
-brew install --cask sync
-brew install --cask tandem
-brew install --cask visual-studio-code
-brew install --cask zoom
+brew install alfred
+brew install appcleaner
+brew install choosy
+brew install coteditor
+brew install dropbox
+brew install discord
+brew install figma
+brew install firefox
+brew install google-chrome
+brew install google-japanese-ime
+brew install imageoptim
+brew install iterm2
+brew install kindle
+brew install notion
+brew install sync
+brew install visual-studio-code
+brew install zoom

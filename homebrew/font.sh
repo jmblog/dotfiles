@@ -1,5 +1,3 @@
-brew tap homebrew/cask-fonts
-brew install svn # required for installing some fonts
 brew install font-bitter
 brew install font-fira-code
 brew install font-fira-sans
