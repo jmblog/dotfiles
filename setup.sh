@@ -113,13 +113,6 @@ bash ./homebrew/brew.sh
 # Install macOS apps
 # ----------------------------------------------------------------------
 
-log_header "Installing macOS apps..."
-read -p "Do you want to install macOS apps using Homebrew Cask? (y/n) " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  bash ./homebrew/cask.sh
-fi
-
 read -p "Do you want to install macOS apps manually? (y/n) " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
