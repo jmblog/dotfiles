@@ -16,9 +16,9 @@ prompt_and_open() {
 # Download from the official websites
 # ----------------------------------------------------------------------
 
-prompt_and_open "Google Chrome" https://www.google.com/chrome/
-
 prompt_and_open 1Password https://1password.com/jp/downloads/mac
+
+prompt_and_open "Google Chrome" https://www.google.com/chrome/
 
 prompt_and_open Alacritty https://alacritty.org/
 
