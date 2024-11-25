@@ -8,7 +8,4 @@ brew install zsh-completions zsh-autosuggestions
 brew install pure
 
 # Mirror dotfiles
-ln -fs "${DOTFILES_DIRECTORY}/zsh/zshrc" "${HOME}/.zshrc"
-
-# Compile .zshrc
-zcompile ~/.zshrc
+ln -fs "${DOTFILES_DIRECTORY}/zsh/.zshrc" "${HOME}/.zshrc"
