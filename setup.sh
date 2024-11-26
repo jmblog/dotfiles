@@ -129,15 +129,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   bash ./homebrew/font.sh
 fi
 
-# Setup item2
-# http://stratus3d.com/blog/2015/02/28/sync-iterm2-profile-with-dotfiles-repository/
+# Setup Alacritty
 # ----------------------------------------------------------------------
 
-log_header "Setting iterm2..."
-# Specify the preferences directory
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/.dotfiles/iterm2"
-# Tell iTerm2 to use the custom preferences in the directory
-defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+log_header "Setting up Alacritty..."
+run_setup "./alacritty/setup.sh"
 
 # Set macOS system defaults
 # ----------------------------------------------------------------------
