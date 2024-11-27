@@ -7,3 +7,6 @@ mkdir -p ~/.config/alacritty/themes
 ln -fs "${DOTFILES_DIRECTORY}/alacritty/alacritty.toml" "${HOME}/.config/alacritty/alacritty.toml"
 
 git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+
+# https://github.com/alacritty/alacritty/issues/4673#issuecomment-771291615
+spctl --add /Applications/Alacritty.app
