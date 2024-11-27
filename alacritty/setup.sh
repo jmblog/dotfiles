@@ -17,4 +17,4 @@ else
 fi
 
 # https://github.com/alacritty/alacritty/issues/4673#issuecomment-771291615
-spctl --add /Applications/Alacritty.app
+xattr -rd com.apple.quarantine /Applications/Alacritty.app
