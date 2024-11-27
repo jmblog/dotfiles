@@ -20,3 +20,9 @@ normal.family = "Fira Code"
 size = 12.0
 
 offset = {x = 0, y = 3}
+
+[keyboard]
+bindings = [
+  {key = "ArrowLeft", mods = "Command", action = "SelectPreviousTab"},
+  {key = "ArrowRight", mods = "Command", action = "SelectNextTab"},
+]
