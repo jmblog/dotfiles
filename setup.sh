@@ -135,6 +135,12 @@ fi
 log_header "Setting up Alacritty..."
 run_setup "./alacritty/setup.sh"
 
+# Setup WezTerm
+# ----------------------------------------------------------------------
+
+log_header "Setting up WezTerm..."
+run_setup "./wezterm/setup.sh"
+
 # Set macOS system defaults
 # ----------------------------------------------------------------------
 
