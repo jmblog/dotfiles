@@ -86,7 +86,7 @@ cd "${DOTFILES_DIRECTORY}"
 log_header "Setting up git..."
 run_setup "./git/setup.sh"
 
-# Setup git
+# Setup zsh
 # ----------------------------------------------------------------------
 
 log_header "Setting up zsh..."
