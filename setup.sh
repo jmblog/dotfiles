@@ -48,12 +48,18 @@ fi
 # ----------------------------------------------------------------------
 
 log_header "Installing git..."
-if ! command -v git > /dev/null 2>&1; then
+
+# Check for Homebrew's git
+if [[ "$(which git)" == "/opt/homebrew/bin/git" ]] || [[ "$(which git)" == "/usr/local/bin/git" ]]; then
+  log_info "Homebrew Git is installed, checking for updates..."
+  (brew upgrade git &> /dev/null || true) &
+  pid=$!
+  wait $pid
+  log_ok "Git update check completed"
+else
+  log_info "Installing Git via Homebrew..."
   brew install git
   log_ok "Git installed successfully"
-else
-  log_info "Git is already installed, checking for updates..."
-  brew upgrade git
 fi
 
 # Check that the connection to the github server
