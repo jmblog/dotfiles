@@ -69,6 +69,7 @@ if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
 else
   log_fail "Failed to authenticate with GitHub"
   log_fail "Please check your SSH key and GitHub account settings"
+  log_info "https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent"
   exit 1
 fi
 
