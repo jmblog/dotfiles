@@ -20,7 +20,7 @@ config.line_height = 1.1
 
 -- Spawn
 config.initial_cols = 150
-config.initial_rows = 60
+config.initial_rows = 50
 
 -- key bindings
 config.keys = {
