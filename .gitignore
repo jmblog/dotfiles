@@ -1,4 +1,5 @@
 .DS_Store
 
 zsh/pure/*.zsh
+zsh/.zcompdump
 .netrwhist

@@ -1,49 +1,68 @@
 #!/usr/bin/env bash
 
+# Function to prompt and open URL
+prompt_and_open() {
+  local app_name="$1"
+  local url="$2"
+
+  echo -e "\n${app_name}"
+  read -p "Would you like to open download page for ${app_name}? (y/N) " -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    open "$url"
+  fi
+}
+
 # Download from the official websites
 # ----------------------------------------------------------------------
 
-# 1Password
-open https://1password.com/jp/downloads/mac/
+prompt_and_open 1Password https://1password.com/jp/downloads/mac
 
-# Docker Desktop
-open https://www.docker.com/products/docker-desktop
+prompt_and_open "Google Chrome" https://www.google.com/chrome/
 
-# Kap
-open https://getkap.co/download
+prompt_and_open Alacritty https://alacritty.org/
 
-# Karabiner Elements
-open https://pqrs.org/osx/karabiner/
+prompt_and_open AppCleaner https://freemacsoft.net/appcleaner/
 
-# Krisp
-#open https://krisp.ai/download.html
+prompt_and_open Discord https://discord.com/download
 
-# Microsoft Office
-open https://www.office.com/
+prompt_and_open Dropbox https://www.dropbox.com/ja/desktop
 
-# Meeter
-open https://trymeeter.com/
+prompt_and_open Figma https://www.figma.com/ja-jp/downloads/
 
-# Mimestream
-open https://mimestream.com/
+prompt_and_open "Firefly IOTA" https://firefly.iota.org/
 
-# Sequel Pro
-#open https://sequelpro.com/download#auto-start
+prompt_and_open "Google Japanese Input" https://www.google.co.jp/ime/
 
-# Slack
-open https://slack.com/intl/ja-jp/downloads/osx
+prompt_and_open Squoosh https://squoosh.app/
 
+prompt_and_open Kap https://getkap.co/
 
-# Get from App Store
-# Dato
-# Keynote
+prompt_and_open "Karabiner Elements" https://karabiner-elements.pqrs.org/
+
+prompt_and_open Notion https://www.notion.com/desktop
+
+prompt_and_open PopClip https://www.popclip.app/
+
+prompt_and_open Slack https://slack.com/intl/en-gb/downloads/mac
+
+prompt_and_open Sync https://www.sync.com/install/
+
+prompt_and_open "Visual Studio Code" https://code.visualstudio.com/download
+
+prompt_and_open "Zoom" https://zoom.us/download
+
+# Get these apps from App Store
+#
 # Battery Indicator
-# Unsplash Wallpapers
-# Spark
 # CotEditor
-# Monosnap
+# Dato
+# Hidden Bar
+# Kindle
+# Keynote
 # LINE
+# Unsplash Wallpapers
 # PopClip
+# Velja
 # ----------------------------------------------------------------------
 open -a "App Store"
-
