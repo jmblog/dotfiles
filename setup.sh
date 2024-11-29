@@ -139,8 +139,8 @@ fi
 # Setup Alacritty
 # ----------------------------------------------------------------------
 
-log_header "Setting up Alacritty..."
-run_setup "./alacritty/setup.sh"
+#log_header "Setting up Alacritty..."
+#run_setup "./alacritty/setup.sh"
 
 # Setup WezTerm
 # ----------------------------------------------------------------------
