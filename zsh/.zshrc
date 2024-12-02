@@ -5,17 +5,14 @@ if [[ ! -f ~/.zshrc.zwc || ~/.zshrc -nt ~/.zshrc.zwc ]]; then
   zcompile ~/.zshrc
 fi
 
-# Set ZDOTDIR
-export ZDOTDIR=$HOME/.dotfiles/zsh
-
 # Load separate config files
-for config_file ($ZDOTDIR/*.zsh(N)); do
+for config_file ($HOME/.dotfiles/zsh/*.zsh(N)); do
   source $config_file
 done
 
 # Load and initialize the completion system
 autoload -Uz compinit
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+if [[ -n ${HOME}/.dotfiles/zsh/.zcompdump(#qN.mh+24) ]]; then
   compinit
 else
   compinit -C
