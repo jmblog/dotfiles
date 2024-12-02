@@ -5,8 +5,8 @@ if [[ ! -f ~/.zshrc.zwc || ~/.zshrc -nt ~/.zshrc.zwc ]]; then
   zcompile ~/.zshrc
 fi
 
-# Set ZDOTDIR if not already set
-: ${ZDOTDIR:=$HOME/.dotfiles/zsh}
+# Set ZDOTDIR
+export ZDOTDIR=$HOME/.dotfiles/zsh
 
 # Load separate config files
 for config_file ($ZDOTDIR/*.zsh(N)); do
