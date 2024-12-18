@@ -15,7 +15,11 @@ config.window_padding = {
 config.window_background_opacity = 0.9
 
 -- Font
-config.font = wezterm.font 'Fira Code'
+config.font = wezterm.font_with_fallback {
+  'Fira Code',
+  'ヒラギノ角ゴシック',
+  'Apple Color Emoji'
+}
 config.line_height = 1.1
 
 -- Spawn
