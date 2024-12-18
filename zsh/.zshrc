@@ -20,6 +20,9 @@ fi
 
 # Setup pure prompt
 autoload -U promptinit; promptinit
+# Show git stash status
+zstyle :prompt:pure:git:stash show yes
+
 prompt pure
 
 # Load any local overrides
