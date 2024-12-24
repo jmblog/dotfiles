@@ -45,6 +45,11 @@ config.keys = {
     mods = 'SUPER',
     action = wezterm.action.ActivateTabRelativeNoWrap(1),
   },
+  { 
+    key = '¥',
+    mods = 'SUPER',
+    action = wezterm.action({ SendString = "\\" })
+  }
 }
 
 -- exit behavior
