@@ -47,7 +47,6 @@ config.keys = {
   },
   { 
     key = '¥',
-    mods = 'SUPER',
     action = wezterm.action({ SendString = "\\" })
   }
 }
