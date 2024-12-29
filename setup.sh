@@ -136,11 +136,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   bash ./homebrew/font.sh
 fi
 
-# Setup Alacritty
-# ----------------------------------------------------------------------
-
-#log_header "Setting up Alacritty..."
-#run_setup "./alacritty/setup.sh"
 
 # Setup WezTerm
 # ----------------------------------------------------------------------
