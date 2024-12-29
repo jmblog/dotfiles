@@ -136,6 +136,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   bash ./homebrew/font.sh
 fi
 
+# Setup Ghostty
+# ----------------------------------------------------------------------
+
+log_header "Setting up Ghostty..."
+run_setup "./ghostty/setup.sh"
 
 # Setup WezTerm
 # ----------------------------------------------------------------------

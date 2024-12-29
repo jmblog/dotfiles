@@ -1,0 +1,25 @@
+# https://github.com/ghostty-org/ghostty/issues/1710
+font-family = "Fira Code"
+font-family = "Osaka"
+font-feature = -dlig
+font-size = 12
+adjust-cell-height = "10%"
+
+theme = "Tomorrow Night Bright"
+
+background-opacity = "0.9"
+
+cursor-style = "block"
+
+window-padding-x = 10
+window-padding-y = 10
+window-height = 50
+window-width = 140
+
+shell-integration = "none"
+
+confirm-close-surface = false
+
+keybind = super+right=next_tab
+keybind = super+left=previous_tab
+keybind = ¥=text:\\
