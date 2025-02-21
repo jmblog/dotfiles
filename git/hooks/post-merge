@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# 現在のブランチが main かどうかをチェック
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+if [ "$current_branch" != "main" ]; then
+  exit 0
+fi
+
+# git cleanup を実行
+git cleanup
+
+# package.json が存在するかチェック
+if [ -f "package.json" ]; then
+  echo "package.json found. Running npm install..."
+  npm install
+fi

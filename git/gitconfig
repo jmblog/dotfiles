@@ -28,6 +28,7 @@
   commentChar = %
   ignorecase = false
   autocrlf = input
+	hooksPath = /Users/jimbo/.config/git/hooks
 [rerere]
   enabled = true
 [pull]
