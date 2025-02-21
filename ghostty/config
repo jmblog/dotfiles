@@ -1,6 +1,6 @@
 # https://github.com/ghostty-org/ghostty/issues/1710
 font-family = "Fira Code"
-font-family = "Osaka"
+font-family = "BIZ UDGothic"
 font-feature = -dlig
 font-size = 12
 adjust-cell-height = "10%"
