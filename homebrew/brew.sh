@@ -10,3 +10,4 @@ brew install shfmt
 brew install go
 brew install gh
 brew install pnpm
+brew install fzf

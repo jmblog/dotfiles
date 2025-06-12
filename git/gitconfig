@@ -1,35 +1,37 @@
 [user]
-  name = Yoshihide Jimbo
-  email = yjimbo@gmail.com
+name = Yoshihide Jimbo
+email = yjimbo@gmail.com
 [alias]
-  st = status
-  co = checkout
-  br = branch
-  ci = commit
-  delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
-  cleanup = !git fetch --all --prune && git delete-merged-branches
-  push-f = !git push --force-with-lease
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
+st = status
+co = checkout
+br = branch
+ci = commit
+delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+cleanup = !git fetch --all --prune && git delete-merged-branches
+push-f = !git push --force-with-lease
+lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
+wb = "!f() { WORKTREE_PATH=../$(basename $(pwd))-${1}; git worktree add $WORKTREE_PATH $2; }; f" # `git wb <branch>` で新しい worktree を作成
+wd = worktree remove .                                                                           # `git wd` で 現在の worktree を削除
 [pager]
-  log = diff-highlight | less -r
-  show = diff-highlight | less -r
-  diff = diff-highlight | less -r
+log = diff-highlight | less -r
+show = diff-highlight | less -r
+diff = diff-highlight | less -r
 [push]
-  default = current
+default = current
 [github]
-  user = jmblog
+user = jmblog
 [credential]
-  helper = osxkeychain
+helper = osxkeychain
 [rebase]
-  autosquash = true
+autosquash = true
 [url "git@github.com:"]
-  insteadOf = https://github.com/
+insteadOf = https://github.com/
 [core]
-  commentChar = %
-  ignorecase = false
-  autocrlf = input
-	hooksPath = /Users/jimbo/.config/git/hooks
+commentChar = %
+ignorecase = false
+autocrlf = input
+hooksPath = /Users/jimbo/.config/git/hooks
 [rerere]
-  enabled = true
+enabled = true
 [pull]
-  rebase = false
+rebase = false
