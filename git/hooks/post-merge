@@ -11,6 +11,11 @@ git cleanup
 
 # package.json が存在するかチェック
 if [ -f "package.json" ]; then
-  echo "package.json found. Running npm install..."
-  npm install
+  if [ -f "pnpm-lock.yaml" ]; then
+    echo "pnpm-lock.yaml found. Running pnpm install..."
+    pnpm install
+  else
+    echo "package.json found. Running npm install..."
+    npm install
+  fi
 fi

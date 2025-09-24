@@ -35,3 +35,5 @@ hooksPath = /Users/jimbo/.config/git/hooks
 enabled = true
 [pull]
 rebase = false
+[coderabbit]
+	machineId = cli/5adee30f3a4048ecb783e89aa9e717c2
