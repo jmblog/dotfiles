@@ -7,6 +7,7 @@ path=(
   /usr/local/go/bin
   $(go env GOPATH)/bin
   $HOME/.volta/bin
+  $HOME/.rbenv/bin
   $path
 )
 

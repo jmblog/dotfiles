@@ -15,6 +15,7 @@ window-padding-x = 10
 window-padding-y = 10
 window-height = 50
 window-width = 140
+window-save-state = always
 
 shell-integration = "none"
 
