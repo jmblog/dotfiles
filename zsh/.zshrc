@@ -27,13 +27,3 @@ prompt pure
 
 # Load any local overrides
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/jimbo/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
-
-# Added by CodeRabbit CLI installer
-export PATH="/Users/jimbo/.local/bin:$PATH"
