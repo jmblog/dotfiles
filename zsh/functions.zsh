@@ -98,6 +98,9 @@ wtd() {
 
   # ワークツリーを削除
   git worktree remove "$current_path" || return 1
+  
+  # コードを最新化
+  git pull && git cleanup
 
   # 成功メッセージ
   echo "✅ Worktree を削除しました: $current_path"
