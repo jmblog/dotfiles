@@ -18,7 +18,10 @@ window-width = 140
 window-save-state = always
 window-inherit-working-directory = true
 
-shell-integration = "none"
+# shell-integrationを明示的にzshに設定
+shell-integration = "zsh"
+# shell-integrationのカーソル自動変更を無効化
+shell-integration-features = no-cursor
 
 confirm-close-surface = false
 
