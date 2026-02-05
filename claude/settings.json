@@ -1,0 +1,253 @@
+{
+  "enabledPlugins" : {
+    "atlassian@claude-plugins-official" : true,
+    "code-analyzer@ubie-plugins" : true,
+    "code-simplifier@claude-plugins-official" : true,
+    "dig@kuu-marketplace" : true,
+    "git-workflow@ubie-plugins" : true,
+    "jmblog-plugins@jmblog-plugins" : true,
+    "mr@ubie-plugins" : true,
+    "swift-lsp@claude-plugins-official" : true
+  },
+  "env" : {
+    "ANTHROPIC_VERTEX_PROJECT_ID" : "ubie-gl-code-agents-local-dev",
+    "CLAUDE_CODE_USE_VERTEX" : "1",
+    "CLOUD_ML_REGION" : "us-east5",
+    "DISABLE_MICROCOMPACT" : "true",
+    "ENABLE_TOOL_RESEARCH" : "true"
+  },
+  "hooks" : {
+    "Notification" : [
+      {
+        "hooks" : [
+          {
+            "command" : "afplay \/System\/Library\/Sounds\/Ping.aiff",
+            "type" : "command"
+          }
+        ],
+        "matcher" : ""
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "*"
+      }
+    ],
+    "PermissionRequest" : [
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "timeout" : 86400,
+            "type" : "command"
+          }
+        ],
+        "matcher" : "*"
+      }
+    ],
+    "PostToolUse" : [
+      {
+        "hooks" : [
+          {
+            "command" : "if [[ $FILE == *.ts || $FILE == *.tsx ]]; then npx tsc --noEmit $FILE; fi",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Edit(**)"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "*"
+      }
+    ],
+    "PreCompact" : [
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "auto"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "manual"
+      }
+    ],
+    "PreToolUse" : [
+      {
+        "hooks" : [
+          {
+            "command" : "~\/.claude\/scripts\/deny-check.sh",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Bash"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "exit 0",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Update(~\/.claude\/continuity\/**)"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "exit 0",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Write(~\/.claude\/continuity\/**)"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "exit 0",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Edit(~\/.claude\/continuity\/**)"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "*"
+      }
+    ],
+    "SessionEnd" : [
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "SessionStart" : [
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "Stop" : [
+      {
+        "hooks" : [
+          {
+            "command" : "afplay \/System\/Library\/Sounds\/Blow.aiff",
+            "type" : "command"
+          }
+        ],
+        "matcher" : ""
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "SubagentStop" : [
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit" : [
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ]
+      }
+    ]
+  },
+  "language" : "Japanese",
+  "permissions" : {
+    "allow" : [
+      "Bash(git:*)",
+      "Bash(git commit:*)",
+      "Bash(npm:*)",
+      "Bash(gh:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Bash(mv:*)",
+      "Bash(npx:*)",
+      "Bash(osascript:*)",
+      "Bash(rg:*)",
+      "Bash(gemini-google-search:*)",
+      "Bash(afplay:*)",
+      "Bash(dbt-helper:*)",
+      "Bash(dbt:*)",
+      "Bash(sqlfluff:*)",
+      "Bash(awk:*)",
+      "Bash(cat:*)",
+      "Bash(sed:*)",
+      "Write(~\/.claude\/continuity\/**)",
+      "Write(\/Users\/jimbo\/.claude\/continuity\/**)",
+      "Edit(~\/.claude\/continuity\/**)",
+      "Edit(\/Users\/jimbo\/.claude\/continuity\/**)",
+      "Update(~\/.claude\/continuity\/**)",
+      "Update(\/Users\/jimbo\/.claude\/continuity\/**)",
+      "Write(~\/.claude\/plans\/**)",
+      "Write(\/Users\/jimbo\/.claude\/plans\/**)",
+      "Edit(~\/.claude\/plans\/**)",
+      "Edit(\/Users\/jimbo\/.claude\/plans\/**)",
+      "Update(~\/.claude\/plans\/**)",
+      "Update(\/Users\/jimbo\/.claude\/plans\/**)",
+      "Coderabbit",
+      "Bash(claude:*)",
+      "Bash(tree:*)"
+    ],
+    "defaultMode" : "plan",
+    "deny" : [
+      "Bash(git config :*)",
+      "Bash(brew install :*)",
+      "Bash(chmod 777 :*)",
+      "Bash(rm -rf \/*)",
+      "Bash(gh repo delete:*)",
+      "Bash(sudo:*)",
+      "Read(.env.*)",
+      "Read(id_rsa)",
+      "Read(id_ed25519)",
+      "Write(.env*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)"
+    ]
+  }
+}

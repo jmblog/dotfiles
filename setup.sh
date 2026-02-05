@@ -148,6 +148,12 @@ run_setup "./ghostty/setup.sh"
 log_header "Setting up WezTerm..."
 run_setup "./wezterm/setup.sh"
 
+# Setup Claude Code
+# ----------------------------------------------------------------------
+
+log_header "Setting up Claude Code..."
+run_setup "./claude/setup.sh"
+
 # Set macOS system defaults
 # ----------------------------------------------------------------------
 
