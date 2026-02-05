@@ -22,3 +22,12 @@ When working with internationalized UI text, be aware that Japanese uses full-wi
   - Example: `gh api repos/OWNER/REPO/pulls/PR_NUMBER/comments`
 - **Never use WebSearch**: For any GitHub-related operations (PRs, issues, comments, checks), always use `gh` command instead of WebSearch
 
+## File Operations
+
+- **Path quoting for special characters**: ALWAYS quote file paths containing parentheses "()" or other special shell characters
+  - **Critical for Bash tool**: Shell interprets parentheses as glob patterns, causing "no matches found" errors
+  - **Git commands**: `git add "src/app/(dpc)/file.tsx"` NOT `git add src/app/(dpc)/file.tsx`
+  - **Shell commands**: `cd "path/(with)/parens"`, `cat "file(1).txt"`
+  - **File tools**: Read, Edit, Write tools automatically handle paths, but verify special characters in path parameters
+  - **Common error**: `(eval):1: no matches found:` indicates missing quotes around path with special characters
+
