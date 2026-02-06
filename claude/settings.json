@@ -152,6 +152,10 @@
           {
             "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
             "type" : "command"
+          },
+          {
+            "command" : "bash ~\/.dotfiles\/claude\/scripts\/sync-agent-skills.sh",
+            "type" : "command"
           }
         ]
       }
