@@ -1,21 +1,18 @@
 # Completion settings
 
+_brew_prefix="${HOMEBREW_PREFIX:-/opt/homebrew}"
+
 if type brew &> /dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  FPATH=$_brew_prefix/share/zsh/site-functions:$_brew_prefix/share/zsh-completions:$FPATH
 fi
-
-# Git completion
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-
-# GitHub CLI completion
-fpath=($(brew --prefix)/share/zsh/site-functions/_gh $fpath)
 
 # Case insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'
 
 # Load zsh-autosuggestions
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $_brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+unset _brew_prefix
 
 # Optimize zsh-autosuggestions
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1

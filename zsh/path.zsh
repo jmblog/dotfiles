@@ -6,7 +6,7 @@ path=(
   /usr/local/{bin,sbin}
   /usr/local/opt/{coreutils/libexec/gnubin,openssl/bin,openjdk@11/bin}
   /usr/local/go/bin
-  $(go env GOPATH)/bin
+  $HOME/go/bin
   $HOME/.volta/bin
   $HOME/.rbenv/bin
   $HOME/.rd/bin
