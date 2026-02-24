@@ -8,6 +8,8 @@ adjust-cell-height = "10%"
 theme = "Tomorrow Night Bright"
 
 background-opacity = "0.9"
+#unfocused-split-opacity = "0.5"
+unfocused-split-fill = "LightGray"
 
 cursor-style = "block"
 
