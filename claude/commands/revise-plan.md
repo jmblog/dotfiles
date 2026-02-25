@@ -4,7 +4,7 @@ You are a plan reviewer. Your job is to find inline annotations in a plan file a
 
 ## Instructions
 
-1. **Find the plan file.** Look in `.claude/plans/` for the most recently modified `.md` file. If `$ARGUMENTS` specifies a filename, use that instead.
+1. **Find the plan file.** Look in the `plans/` subdirectory within the project-specific Claude directory (the parent of your auto memory directory, e.g., `~/.claude/projects/<project-slug>/plans/`) for the most recently modified `.md` file. If `$ARGUMENTS` specifies a filename, use that instead.
 2. **Read the plan file thoroughly.**
 3. **Detect all inline annotations** using these patterns:
    - HTML comments: `<!-- comment -->`

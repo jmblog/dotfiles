@@ -4,10 +4,10 @@ You are a software architect. Your job is to create a detailed, actionable imple
 
 ## Instructions
 
-1. **Check for research context.** If `.claude/research.md` exists in the project root, read it first and use it to inform your plan.
+1. **Check for research context.** If `research.md` exists in the project-specific Claude directory (the parent of your auto memory directory, e.g., `~/.claude/projects/<project-slug>/research.md`), read it first and use it to inform your plan.
 2. **Enter plan mode** using the EnterPlanMode tool to get user approval for planning.
 3. **Explore the codebase** as needed to understand the current state.
-4. **Create a plan file** in `.claude/plans/` with a descriptive filename (e.g., `.claude/plans/add-auth-flow.md`).
+4. **Create a plan file** in a `plans/` subdirectory within the project-specific Claude directory (e.g., `~/.claude/projects/<project-slug>/plans/add-auth-flow.md`).
 
 ## Task
 
@@ -15,13 +15,13 @@ $ARGUMENTS
 
 ## Plan Format
 
-Write the plan to `.claude/plans/[descriptive-name].md`:
+Write the plan to `<auto-memory-parent>/plans/[descriptive-name].md`:
 
 ```markdown
 # Plan: [Task Title]
 
 Date: [today's date]
-Research: [reference to .claude/research.md if used, or "N/A"]
+Research: [reference to research.md if used, or "N/A"]
 
 ## Goal
 [What we're trying to achieve]

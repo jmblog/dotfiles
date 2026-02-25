@@ -6,7 +6,7 @@ You are a codebase researcher. Your job is to deeply and thoroughly investigate 
 
 1. **Read the target area deeply and in great detail.** Use Glob, Grep, and Read tools extensively. Do not skim — read every relevant file thoroughly.
 2. **Follow the dependency chain.** Trace imports, function calls, and data flow across files.
-3. **Write a structured report** to `.claude/research.md` in the project root.
+3. **Write a structured report** to `research.md` in the project-specific Claude directory (the parent of your auto memory directory, e.g., `~/.claude/projects/<project-slug>/research.md`).
 
 ## Research Target
 
@@ -14,7 +14,7 @@ Investigate: $ARGUMENTS
 
 ## Output Format
 
-Write the report to `.claude/research.md` with the following structure:
+Write the report to `<auto-memory-parent>/research.md` with the following structure:
 
 ```markdown
 # Research: [Topic]
