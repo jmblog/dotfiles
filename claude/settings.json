@@ -240,6 +240,10 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
   "enabledPlugins": {
     "atlassian@claude-plugins-official": true,
     "code-analyzer@ubie-plugins": true,
@@ -251,6 +255,5 @@
     "swift-lsp@claude-plugins-official": true
   },
   "language": "Japanese",
-  "skipDangerousModePermissionPrompt": true,
-  "effortLevel": "medium"
+  "skipDangerousModePermissionPrompt": true
 }
