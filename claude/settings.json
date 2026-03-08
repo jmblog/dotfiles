@@ -8,6 +8,7 @@
       "Bash(git:*)",
       "Bash(git commit:*)",
       "Bash(npm:*)",
+      "Bash(pnpm:*)",
       "Bash(gh:*)",
       "Bash(find:*)",
       "Bash(ls:*)",
