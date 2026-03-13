@@ -48,6 +48,7 @@
       "Bash(ps *)",
       "Bash(lsof *)",
       "Bash(mise *)",
+      "Bash(npx tsc *)",
       "WebFetch(domain:*)",
       "WebSearch"
     ],
