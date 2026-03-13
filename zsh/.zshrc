@@ -25,6 +25,14 @@ zstyle :prompt:pure:git:stash show yes
 
 prompt pure
 
+# Ghosttyのwindow-inherit-working-directoryのためにOSC 7でCWDを通知
+# shell-integration=noneでもディレクトリ継承が機能するようにする
+_osc7_cwd() {
+  printf '\e]7;file://%s%s\e\\' "${HOST}" "${PWD}"
+}
+add-zsh-hook chpwd _osc7_cwd
+_osc7_cwd
+
 # Load any local overrides
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
