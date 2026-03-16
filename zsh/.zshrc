@@ -28,7 +28,18 @@ prompt pure
 # Ghosttyのwindow-inherit-working-directoryのためにOSC 7でCWDを通知
 # shell-integration=noneでもディレクトリ継承が機能するようにする
 _osc7_cwd() {
-  printf '\e]7;file://%s%s\e\\' "${HOST}" "${PWD}"
+  local encoded_pwd=""
+  local i ch hex
+  for (( i = 1; i <= ${#PWD}; i++ )); do
+    ch="${PWD[i]}"
+    if [[ "$ch" =~ [a-zA-Z0-9._~:@!$\&\'*+,=/-] ]]; then
+      encoded_pwd+="$ch"
+    else
+      hex=$(printf '%%%02X' "'$ch")
+      encoded_pwd+="$hex"
+    fi
+  done
+  printf '\e]7;file://%s%s\e\\' "${HOST}" "$encoded_pwd"
 }
 add-zsh-hook chpwd _osc7_cwd
 _osc7_cwd
