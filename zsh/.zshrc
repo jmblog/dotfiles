@@ -1,5 +1,8 @@
 # .zshrc
 
+# Allow comments in interactive shell
+setopt INTERACTIVE_COMMENTS
+
 # Performance optimization: Compile if needed
 if [[ ! -f ~/.zshrc.zwc || ~/.zshrc -nt ~/.zshrc.zwc ]]; then
   zcompile ~/.zshrc
@@ -57,3 +60,5 @@ export PATH="/Users/jimbo/.rd/bin:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+eval "$(/Users/jimbo/.local/bin/mise activate zsh)"
