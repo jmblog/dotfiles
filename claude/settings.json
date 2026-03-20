@@ -1,10 +1,215 @@
 {
-  "env": {
-    "DISABLE_MICROCOMPACT": "true",
-    "ENABLE_TOOL_RESEARCH": "true"
+  "enabledPlugins" : {
+    "atlassian@claude-plugins-official" : true,
+    "code-analyzer@ubie-plugins" : true,
+    "code-simplifier@claude-plugins-official" : true,
+    "dig@kuu-marketplace" : true,
+    "frontend-design@claude-plugins-official" : true,
+    "git-workflow@ubie-plugins" : true,
+    "jmblog-plugins@jmblog-plugins" : true,
+    "mr@ubie-plugins" : true,
+    "swift-lsp@claude-plugins-official" : true
   },
-  "permissions": {
-    "allow": [
+  "env" : {
+    "DISABLE_MICROCOMPACT" : "true",
+    "ENABLE_TOOL_RESEARCH" : "true"
+  },
+  "extraKnownMarketplaces" : {
+    "claude-plugins-official" : {
+      "source" : {
+        "repo" : "anthropics\/claude-plugins-official",
+        "source" : "github"
+      }
+    }
+  },
+  "hooks" : {
+    "Notification" : [
+      {
+        "hooks" : [
+          {
+            "command" : "afplay \/System\/Library\/Sounds\/Ping.aiff",
+            "type" : "command"
+          }
+        ],
+        "matcher" : ""
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "*"
+      }
+    ],
+    "PermissionRequest" : [
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "timeout" : 86400,
+            "type" : "command"
+          }
+        ],
+        "matcher" : "*"
+      }
+    ],
+    "PostToolUse" : [
+      {
+        "hooks" : [
+          {
+            "command" : "if [[ $FILE == *.ts || $FILE == *.tsx ]]; then npx tsc --noEmit $FILE; fi",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Edit(**)"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "*"
+      }
+    ],
+    "PreCompact" : [
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "auto"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "manual"
+      }
+    ],
+    "PreToolUse" : [
+      {
+        "hooks" : [
+          {
+            "command" : "~\/.claude\/scripts\/deny-check.sh",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Bash"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "exit 0",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Update(~\/.claude\/continuity\/**)"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "exit 0",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Write(~\/.claude\/continuity\/**)"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "exit 0",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Edit(~\/.claude\/continuity\/**)"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "*"
+      }
+    ],
+    "SessionEnd" : [
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "SessionStart" : [
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          },
+          {
+            "command" : "bash ~\/.dotfiles\/claude\/scripts\/sync-agent-skills.sh",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "Stop" : [
+      {
+        "hooks" : [
+          {
+            "command" : "afplay \/System\/Library\/Sounds\/Blow.aiff",
+            "type" : "command"
+          }
+        ],
+        "matcher" : ""
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "SubagentStop" : [
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit" : [
+      {
+        "hooks" : [
+          {
+            "command" : "python3 ~\/.claude\/hooks\/claude-island-state.py",
+            "type" : "command"
+          }
+        ]
+      }
+    ]
+  },
+  "language" : "Japanese",
+  "model" : "claude-opus-4-6",
+  "permissions" : {
+    "allow" : [
       "Bash(cat *)",
       "Bash(ls *)",
       "Bash(find *)",
@@ -52,41 +257,7 @@
       "WebFetch(domain:*)",
       "WebSearch"
     ],
-    "deny": [
-      "Bash(*/python* *)",
-      "Bash(python* *)",
-      "Bash(*/node *)",
-      "Bash(node *)",
-      "Bash(bash *)",
-      "Bash(*/bash *)",
-      "Bash(sh *)",
-      "Bash(*/sh *)",
-      "Bash(zsh *)",
-      "Bash(*/zsh *)",
-      "Bash(csh *)",
-      "Bash(*/csh *)",
-      "Bash(tcsh *)",
-      "Bash(*/tcsh *)",
-      "Bash(ksh *)",
-      "Bash(*/ksh *)",
-      "Bash(fish *)",
-      "Bash(*/fish *)",
-      "Bash(dash *)",
-      "Bash(*/dash *)",
-      "Bash(go run *)",
-      "Bash(*/go run *)",
-      "Bash(curl *)",
-      "Bash(*/curl *)",
-      "Bash(wget *)",
-      "Bash(nc *)",
-      "Bash(ncat *)",
-      "Bash(ssh *)",
-      "Bash(scp *)",
-      "Bash(rsync *)",
-      "Bash(git reset --hard *)",
-      "Bash(git clean -fd *)"
-    ],
-    "ask": [
+    "ask" : [
       "Bash(rm *)",
       "Bash(mv *)",
       "Bash(cp *)",
@@ -102,332 +273,161 @@
       "Bash(kill *)",
       "Bash(pkill *)",
       "mcp__claude_ai_Slack"
+    ],
+    "deny" : [
+      "Bash(*\/python* *)",
+      "Bash(python* *)",
+      "Bash(*\/node *)",
+      "Bash(node *)",
+      "Bash(bash *)",
+      "Bash(*\/bash *)",
+      "Bash(sh *)",
+      "Bash(*\/sh *)",
+      "Bash(zsh *)",
+      "Bash(*\/zsh *)",
+      "Bash(csh *)",
+      "Bash(*\/csh *)",
+      "Bash(tcsh *)",
+      "Bash(*\/tcsh *)",
+      "Bash(ksh *)",
+      "Bash(*\/ksh *)",
+      "Bash(fish *)",
+      "Bash(*\/fish *)",
+      "Bash(dash *)",
+      "Bash(*\/dash *)",
+      "Bash(go run *)",
+      "Bash(*\/go run *)",
+      "Bash(curl *)",
+      "Bash(*\/curl *)",
+      "Bash(wget *)",
+      "Bash(nc *)",
+      "Bash(ncat *)",
+      "Bash(ssh *)",
+      "Bash(scp *)",
+      "Bash(rsync *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean -fd *)"
     ]
   },
-  "model": "claude-opus-4-6",
-  "hooks": {
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Ping.aiff"
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
-          }
-        ]
-      }
-    ],
-    "PermissionRequest": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
-            "timeout": 86400
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Edit(**)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [[ $FILE == *.ts || $FILE == *.tsx ]]; then npx tsc --noEmit $FILE; fi"
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "matcher": "auto",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
-          }
-        ]
-      },
-      {
-        "matcher": "manual",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/scripts/deny-check.sh"
-          }
-        ]
-      },
-      {
-        "matcher": "Update(~/.claude/continuity/**)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "exit 0"
-          }
-        ]
-      },
-      {
-        "matcher": "Write(~/.claude/continuity/**)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "exit 0"
-          }
-        ]
-      },
-      {
-        "matcher": "Edit(~/.claude/continuity/**)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "exit 0"
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
-          },
-          {
-            "type": "command",
-            "command": "bash ~/.dotfiles/claude/scripts/sync-agent-skills.sh"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Blow.aiff"
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
-          }
-        ]
-      }
-    ],
-    "SubagentStop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
-          }
-        ]
-      }
-    ]
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/scripts/statusline-command.sh"
-  },
-  "enabledPlugins": {
-    "atlassian@claude-plugins-official": true,
-    "code-analyzer@ubie-plugins": true,
-    "code-simplifier@claude-plugins-official": true,
-    "dig@kuu-marketplace": true,
-    "git-workflow@ubie-plugins": true,
-    "jmblog-plugins@jmblog-plugins": true,
-    "mr@ubie-plugins": true,
-    "swift-lsp@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true
-  },
-  "extraKnownMarketplaces": {
-    "claude-plugins-official": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/claude-plugins-official"
-      }
-    }
-  },
-  "language": "Japanese",
-  "sandbox": {
-    "enabled": true,
-    "autoAllowBashIfSandboxed": true,
-    "allowUnsandboxedCommands": false,
-    "network": {
-      "allowedDomains": [
-        "registry.npmjs.org",
-        "github.com",
-        "api.github.com"
-      ],
-      "allowAllUnixSockets": true,
-      "allowLocalBinding": true
-    },
-    "filesystem": {
-      "allowWrite": [
-        "//tmp/claude-work",
-        "~/.npm",
-        "~/.cache",
-        "~/.agent-browser",
-        "~/Library/Caches/go-build",
-        "~/Library/Caches/ms-playwright"
-      ],
-      "denyWrite": [
-        "//etc",
-        "//usr",
-        "//bin",
-        "//sbin",
-        "//opt",
-        "//var",
-        "//System",
-        "//Library",
-        "~/.ssh",
-        "~/.gnupg",
-        "~/.bashrc",
-        "~/.bash_profile",
-        "~/.zshrc",
-        "~/.zprofile",
-        "~/.profile",
-        "~/.config/fish",
-        "~/.claude/settings.json",
-        "~/.claude/settings.local.json"
-      ],
-      "denyRead": [
-        "~/.ssh",
-        "~/.gnupg",
-        "~/.aws",
-        "~/.azure",
-        "~/.config/gcloud",
-        "~/.config/gh",
-        "~/.docker/config.json",
-        "~/.kube",
-        "~/.npmrc",
-        "~/.pypirc",
-        "~/.netrc",
-        "~/.git-credentials",
-        "~/.password-store",
-        "~/.local/share/keyrings",
-        "~/.gnome2/keyrings",
-        "~/.kde/share/apps/kwallet",
-        "~/.config/hub",
-        "~/.config/op",
-        "~/.config/configstore",
-        "~/.terraform.d/credentials.tfrc.json",
-        "~/.vault-token",
-        "~/.config/sops",
-        "~/.config/age",
-        "~/.age",
-        "~/.secrets",
-        "~/.secrets.yaml",
-        "~/.config/heroku",
-        "~/.config/vercel",
-        "~/.config/netlify",
-        "~/.config/firebase",
-        "~/.config/stripe",
-        "~/.config/twilio",
-        "~/.config/circleci",
-        "~/.pulumi/credentials.json",
-        "~/.sentryclirc",
-        "~/.config/snyk",
-        "~/.sup",
-        "~/.config/helm",
-        "~/.config/doctl",
-        "~/.config/linode-cli",
-        "~/.config/hcloud",
-        "~/.fly",
-        "~/.dbt/profiles.yml",
-        "~/.pgpass",
-        "~/.my.cnf",
-        "~/.mongoshrc.js",
-        "~/.rediscli_history",
-        "~/.config/redis",
-        "~/.claude/settings.json",
-        "~/.claude/settings.local.json",
-        "~/.bash_history",
-        "~/.zsh_history",
-        "~/.node_repl_history",
-        "~/.python_history",
-        "~/.psql_history",
-        "~/.mysql_history",
-        "~/.irb_history",
-        "//etc/shadow",
-        "//etc/gshadow",
-        "//etc/sudoers",
-        "//etc/ssl/private",
-        "//etc/pki"
-      ]
-    },
-    "excludedCommands": [
+  "sandbox" : {
+    "allowUnsandboxedCommands" : false,
+    "autoAllowBashIfSandboxed" : true,
+    "enabled" : true,
+    "excludedCommands" : [
       "git:*",
       "gh:*",
       "gcloud:*",
       "docker:*",
       "bq:*"
-    ]
+    ],
+    "filesystem" : {
+      "allowWrite" : [
+        "\/\/tmp\/claude-work",
+        "~\/.npm",
+        "~\/.cache",
+        "~\/.agent-browser",
+        "~\/Library\/Caches\/go-build",
+        "~\/Library\/Caches\/ms-playwright"
+      ],
+      "denyRead" : [
+        "~\/.ssh",
+        "~\/.gnupg",
+        "~\/.aws",
+        "~\/.azure",
+        "~\/.config\/gcloud",
+        "~\/.config\/gh",
+        "~\/.docker\/config.json",
+        "~\/.kube",
+        "~\/.npmrc",
+        "~\/.pypirc",
+        "~\/.netrc",
+        "~\/.git-credentials",
+        "~\/.password-store",
+        "~\/.local\/share\/keyrings",
+        "~\/.gnome2\/keyrings",
+        "~\/.kde\/share\/apps\/kwallet",
+        "~\/.config\/hub",
+        "~\/.config\/op",
+        "~\/.config\/configstore",
+        "~\/.terraform.d\/credentials.tfrc.json",
+        "~\/.vault-token",
+        "~\/.config\/sops",
+        "~\/.config\/age",
+        "~\/.age",
+        "~\/.secrets",
+        "~\/.secrets.yaml",
+        "~\/.config\/heroku",
+        "~\/.config\/vercel",
+        "~\/.config\/netlify",
+        "~\/.config\/firebase",
+        "~\/.config\/stripe",
+        "~\/.config\/twilio",
+        "~\/.config\/circleci",
+        "~\/.pulumi\/credentials.json",
+        "~\/.sentryclirc",
+        "~\/.config\/snyk",
+        "~\/.sup",
+        "~\/.config\/helm",
+        "~\/.config\/doctl",
+        "~\/.config\/linode-cli",
+        "~\/.config\/hcloud",
+        "~\/.fly",
+        "~\/.dbt\/profiles.yml",
+        "~\/.pgpass",
+        "~\/.my.cnf",
+        "~\/.mongoshrc.js",
+        "~\/.rediscli_history",
+        "~\/.config\/redis",
+        "~\/.claude\/settings.json",
+        "~\/.claude\/settings.local.json",
+        "~\/.bash_history",
+        "~\/.zsh_history",
+        "~\/.node_repl_history",
+        "~\/.python_history",
+        "~\/.psql_history",
+        "~\/.mysql_history",
+        "~\/.irb_history",
+        "\/\/etc\/shadow",
+        "\/\/etc\/gshadow",
+        "\/\/etc\/sudoers",
+        "\/\/etc\/ssl\/private",
+        "\/\/etc\/pki"
+      ],
+      "denyWrite" : [
+        "\/\/etc",
+        "\/\/usr",
+        "\/\/bin",
+        "\/\/sbin",
+        "\/\/opt",
+        "\/\/var",
+        "\/\/System",
+        "\/\/Library",
+        "~\/.ssh",
+        "~\/.gnupg",
+        "~\/.bashrc",
+        "~\/.bash_profile",
+        "~\/.zshrc",
+        "~\/.zprofile",
+        "~\/.profile",
+        "~\/.config\/fish",
+        "~\/.claude\/settings.json",
+        "~\/.claude\/settings.local.json"
+      ]
+    },
+    "network" : {
+      "allowAllUnixSockets" : true,
+      "allowedDomains" : [
+        "registry.npmjs.org",
+        "github.com",
+        "api.github.com"
+      ],
+      "allowLocalBinding" : true
+    }
   },
-  "voiceEnabled": true,
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt" : true,
+  "statusLine" : {
+    "command" : "bash ~\/.claude\/scripts\/statusline-command.sh",
+    "type" : "command"
+  },
+  "voiceEnabled" : true
 }
