@@ -207,7 +207,6 @@
     ]
   },
   "language" : "Japanese",
-  "model" : "claude-opus-4-6",
   "permissions" : {
     "allow" : [
       "Bash(cat *)",
@@ -237,10 +236,12 @@
       "Bash(git blame *)",
       "Bash(git remote -v *)",
       "Bash(git stash *)",
-      "Bash(git add *)",
+      "Bash(git add:*)",
       "Bash(git commit *)",
       "Bash(git switch *)",
       "Bash(git fetch *)",
+      "Bash(git revert:*)",
+      "Bash(gh pr:*)",
       "Bash(npm run *)",
       "Bash(pnpm *)",
       "Bash(yarn *)",
