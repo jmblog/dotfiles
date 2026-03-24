@@ -50,6 +50,12 @@ wts() {
     echo "✓ .env.local をコピーしました"
   fi
   
+  # mise の設定ファイルを信頼（存在する場合）
+  if [ -f "$worktree_path/.mise.toml" ] || [ -f "$worktree_path/.mise.local.toml" ]; then
+    mise trust "$worktree_path"
+    echo "✓ mise trust を実行しました"
+  fi
+
   # 依存関係をインストール（package.json がある場合）
   if [ -f package.json ]; then
     echo "📦 依存関係をインストール中..."
