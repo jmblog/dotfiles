@@ -51,10 +51,12 @@ wts() {
   fi
   
   # mise の設定ファイルを信頼（存在する場合）
-  if [ -f "$worktree_path/.mise.toml" ] || [ -f "$worktree_path/.mise.local.toml" ]; then
-    mise trust "$worktree_path"
-    echo "✓ mise trust を実行しました"
-  fi
+  for mise_file in .mise.toml .mise.local.toml mise.toml mise.local.toml; do
+    if [ -f "$worktree_path/$mise_file" ]; then
+      mise trust "$worktree_path/$mise_file"
+      echo "✓ mise trust を実行しました: $mise_file"
+    fi
+  done
 
   # 依存関係をインストール（package.json がある場合）
   if [ -f package.json ]; then
