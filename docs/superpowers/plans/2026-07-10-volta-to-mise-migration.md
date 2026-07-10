@@ -258,22 +258,36 @@ volta uninstall 2>/dev/null; rm -rf ~/.volta ~/.last_node_version
 ```
 Expected: エラーなく完了
 
-- [ ] **Step 3: mise を brew 版に寄せる（任意）**
+- [ ] **Step 3: mise を brew 版に一本化（旧 curl 版バイナリを削除）**
 
-Run: `brew install mise`
-Expected: インストール完了（既に curl 版がある場合も brew 版が入る）
+`brew install mise` 済みでも、PATH で `~/.local/bin`（curl 版の位置）が
+`/opt/homebrew/bin` より先に来るため、旧 curl 版バイナリが残っていると
+`mise` はそちらに解決され続ける（activate 関数にも旧パスが焼き込まれる）。
+データ/設定（`~/.config/mise`・`~/.local/share/mise`）はバイナリ位置と独立で
+共有のため、旧バイナリを削除してもインストール済み node 等は失われない。
+
+Run:
+```bash
+brew install mise         # 未導入なら
+rm -f ~/.local/bin/mise   # 旧 curl 版バイナリを削除（データは残る）
+```
+Expected: `/opt/homebrew/bin/mise` のみが残る
 
 - [ ] **Step 4: 新しいシェルで検証**
 
 Run（新しいシェルを開いて）:
 ```bash
-which mise          # → /opt/homebrew/bin/mise を期待
+type mise           # → 関数（正常）。関数本体が /opt/homebrew/bin/mise を参照すること
+command -v mise      # → /opt/homebrew/bin/mise（PATH 解決先）
 which -a node       # → ~/.volta を含まないこと
 node -v             # → LTS バージョンが返ること
 firebase --version  # → バージョンが返ること
 mise doctor         # → 致命的エラーがないこと
 ```
-Expected: 上記すべてが期待どおり（volta フォールバックが消えている）
+Expected: 上記すべてが期待どおり（volta フォールバック・旧 mise パスが消えている）
+
+注: mise は activate 時に `mise` という名のシェル関数を定義するため、
+`which mise` が関数を返すのは正常。判断は「関数本体が参照するバイナリパス」で行う。
 
 - [ ] **Step 5: ブランチをマージ（finishing-a-development-branch スキルに従う）**
 
