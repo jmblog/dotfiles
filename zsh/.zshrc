@@ -61,4 +61,4 @@ export PATH="/Users/jimbo/.rd/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-eval "$(/Users/jimbo/.local/bin/mise activate zsh)"
+eval "$(mise activate zsh)"
