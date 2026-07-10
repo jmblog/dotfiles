@@ -93,7 +93,6 @@
       "Bash(mv *)",
       "Bash(cp *)",
       "Bash(sed *)",
-      "Bash(npx *)",
       "Bash(git push *)",
       "Bash(git pull *)",
       "Bash(git checkout *)",
@@ -104,7 +103,8 @@
       "Bash(kill *)",
       "Bash(pkill *)",
       "mcp__claude_ai_Slack"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "hooks": {
     "Notification": [
@@ -122,7 +122,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
           }
         ]
       }
@@ -133,7 +133,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py",
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'",
             "timeout": 86400
           }
         ]
@@ -154,7 +154,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
           }
         ]
       }
@@ -165,7 +176,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
           }
         ]
       },
@@ -174,54 +185,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
           }
         ]
       }
     ],
     "PreToolUse": [
       {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/scripts/deny-check.sh"
-          }
-        ]
-      },
-      {
-        "matcher": "Update(~/.claude/continuity/**)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "exit 0"
-          }
-        ]
-      },
-      {
-        "matcher": "Write(~/.claude/continuity/**)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "exit 0"
-          }
-        ]
-      },
-      {
-        "matcher": "Edit(~/.claude/continuity/**)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "exit 0"
-          }
-        ]
-      },
-      {
         "matcher": "*",
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
           }
         ]
       }
@@ -231,7 +206,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
           }
         ]
       }
@@ -241,11 +216,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
-          },
+            "command": "bash ~/.dotfiles/claude/scripts/sync-agent-skills.sh"
+          }
+        ]
+      },
+      {
+        "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.dotfiles/claude/scripts/sync-agent-skills.sh"
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
           }
         ]
       }
@@ -264,7 +243,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
           }
         ]
       }
@@ -274,7 +253,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
           }
         ]
       }
@@ -284,7 +263,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ~/.claude/hooks/claude-island-state.py"
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
           }
         ]
       }
@@ -296,18 +275,15 @@
   },
   "enabledPlugins": {
     "atlassian@claude-plugins-official": true,
-    "code-analyzer@ubie-plugins": true,
-    "code-simplifier@claude-plugins-official": true,
-    "dig@kuu-marketplace": true,
-    "frontend-design@claude-plugins-official": true,
-    "git-workflow@ubie-plugins": true,
-    "jmblog-plugins@jmblog-plugins": true,
-    "mr@ubie-plugins": true,
-    "swift-lsp@claude-plugins-official": true,
-    "kickoff@ubie-plugins": true,
-    "problem-solving@ubie-plugins": true,
+    "dpc-oracle@dpc-oracle": true,
     "slide-banana@ubie-plugins": true,
-    "ubie-basics@ubie-plugins": true
+    "superpowers@claude-plugins-official": true,
+    "superpowers@superpowers-dev": false,
+    "swift-lsp@claude-plugins-official": false,
+    "ubie-basics@ubie-plugins": true,
+    "compact-plus@compact-plus-local": true,
+    "crit@crit": true,
+    "frontend-design@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -316,14 +292,40 @@
         "repo": "anthropics/claude-plugins-official"
       }
     },
+    "dpc-oracle": {
+      "source": {
+        "source": "github",
+        "repo": "ubie-inc/dpc-oracle"
+      }
+    },
+    "superpowers-dev": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers"
+      }
+    },
     "ubie-plugins": {
       "source": {
         "source": "github",
         "repo": "ubie-inc/claude-plugins"
+      },
+      "autoUpdate": true
+    },
+    "compact-plus-local": {
+      "source": {
+        "source": "github",
+        "repo": "u-ichi/compact-plus"
+      }
+    },
+    "crit": {
+      "source": {
+        "source": "github",
+        "repo": "tomasz-tomczyk/crit"
       }
     }
   },
   "language": "Japanese",
+  "teammateDefaultModel": "sonnet",
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
@@ -344,7 +346,8 @@
         "~/.cache",
         "~/.agent-browser",
         "~/Library/Caches/go-build",
-        "~/Library/Caches/ms-playwright"
+        "~/Library/Caches/ms-playwright",
+        "~/.crit"
       ],
       "denyWrite": [
         "//etc",
@@ -439,6 +442,11 @@
       "bq:*"
     ]
   },
-  "voiceEnabled": true,
-  "skipDangerousModePermissionPrompt": true
+  "advisorModel": "fable",
+  "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark-daltonized",
+  "preferredNotifChannel": "terminal_bell",
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true
 }
