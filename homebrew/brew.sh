@@ -10,6 +10,7 @@ brew install shfmt
 brew install go
 brew install gh
 brew install pnpm
+brew install mise
 brew install fzf
 brew install ripgrep
 

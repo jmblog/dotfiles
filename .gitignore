@@ -3,3 +3,6 @@
 zsh/pure/*.zsh
 zsh/.zcompdump
 .netrwhist
+
+# OAuth client secret (never commit)
+claude/skills/gws/oauth-client.json

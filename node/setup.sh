@@ -1,12 +1,6 @@
-# Install volta
-curl https://get.volta.sh | bash
+# Set the latest LTS version of node as the global default
+mise use -g node@lts
 
-# Set up Volta environment
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-# Install the latest LTS version of node
-volta install node
-
-# Install packages globally
-npm install -g firebase-tools@latest
+# Install global tools via mise's npm backend
+# （node のバージョンと独立して管理されるため、切替時の再インストールが不要）
+mise use -g npm:firebase-tools
