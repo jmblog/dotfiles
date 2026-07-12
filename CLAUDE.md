@@ -18,7 +18,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ./vim/setup.sh           # Vim設定
 ./node/setup.sh          # miseによるNode.js
 ./ghostty/setup.sh       # Ghosttyターミナル設定
-./wezterm/setup.sh       # WezTermターミナル設定
 
 # パッケージインストール
 ./homebrew/brew.sh       # 開発ツールとユーティリティ
@@ -52,7 +51,7 @@ ls -la ~/.zshrc ~/.gitconfig ~/.vimrc
 
 - **Git**: フック、グローバルgitignore/gitattributes、GitHub CLIを含む完全な設定
 - **Zsh**: 複数ファイルに分割されたモジュラー設定（エイリアス、補完、履歴など）
-- **ターミナル**: Ghostty と WezTerm の両方をサポート、設定ファイル付き
+- **ターミナル**: Ghostty をサポート、設定ファイル付き
 - **Node.js**: mise で管理、npm設定付き
 - **Vim**: カラースキームとプラグインを含むカスタム設定
 

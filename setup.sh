@@ -142,12 +142,6 @@ fi
 log_header "Setting up Ghostty..."
 run_setup "./ghostty/setup.sh"
 
-# Setup WezTerm
-# ----------------------------------------------------------------------
-
-log_header "Setting up WezTerm..."
-run_setup "./wezterm/setup.sh"
-
 # Setup Claude Code
 # ----------------------------------------------------------------------
 
