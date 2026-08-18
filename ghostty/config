@@ -13,6 +13,10 @@ unfocused-split-fill = "LightGray"
 
 cursor-style = "block"
 
+copy-on-select = clipboard
+
+link-url = false
+
 window-padding-x = 10
 window-padding-y = 10
 window-height = 50
