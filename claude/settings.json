@@ -17,10 +17,12 @@
       "Bash(which *)",
       "Bash(echo *)",
       "Bash(date *)",
+      "Bash(sed *)",
       "Bash(sort *)",
       "Bash(uniq *)",
       "Bash(diff *)",
       "Bash(awk *)",
+      "Bash(python* *)",
       "Bash(jq *)",
       "Bash(git status *)",
       "Bash(git diff *)",
@@ -56,7 +58,6 @@
     ],
     "deny": [
       "Bash(*/python* *)",
-      "Bash(python* *)",
       "Bash(*/node *)",
       "Bash(node *)",
       "Bash(bash *)",
@@ -92,7 +93,6 @@
       "Bash(rm *)",
       "Bash(mv *)",
       "Bash(cp *)",
-      "Bash(sed *)",
       "Bash(git push *)",
       "Bash(git pull *)",
       "Bash(git checkout *)",
@@ -102,7 +102,11 @@
       "Bash(chmod *)",
       "Bash(kill *)",
       "Bash(pkill *)",
-      "mcp__claude_ai_Slack"
+      "mcp__claude_ai_Slack__slack_send_message",
+      "mcp__claude_ai_Slack__slack_send_message_draft",
+      "mcp__claude_ai_Slack__slack_schedule_message",
+      "mcp__claude_ai_Slack__slack_create_canvas",
+      "mcp__claude_ai_Slack__slack_update_canvas"
     ],
     "defaultMode": "auto"
   },
@@ -127,6 +131,17 @@
         ]
       }
     ],
+    "PermissionDenied": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
+          }
+        ]
+      }
+    ],
     "PermissionRequest": [
       {
         "matcher": "*",
@@ -139,7 +154,38 @@
         ]
       }
     ],
+    "PostCompact": [
+      {
+        "matcher": "auto",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
+          }
+        ]
+      },
+      {
+        "matcher": "manual",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
+      {
+        "matcher": "Task|Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/jimbo/.claude/control-room/delegation_hook.py' || true",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      },
       {
         "matcher": "Edit(**)",
         "hooks": [
@@ -192,6 +238,17 @@
     ],
     "PreToolUse": [
       {
+        "matcher": "Task|Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/jimbo/.claude/control-room/delegation_hook.py' || true",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      },
+      {
         "matcher": "*",
         "hooks": [
           {
@@ -243,12 +300,62 @@
         "hooks": [
           {
             "type": "command",
+            "command": "python3 '/Users/jimbo/.claude/control-room/delegation_hook.py' || true",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/jimbo/.claude/control-room/delegation_hook.py' || true",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
             "command": "python3 '/Users/jimbo/.claude/hooks/claude-island-state.py'"
           }
         ]
       }
     ],
     "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/jimbo/.claude/control-room/delegation_hook.py' || true",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      },
       {
         "hooks": [
           {
@@ -275,21 +382,37 @@
   },
   "enabledPlugins": {
     "atlassian@claude-plugins-official": true,
+    "compact-plus@compact-plus-local": true,
+    "crit@crit": true,
+    "dpc-monthly-report@ubie-plugins": true,
     "dpc-oracle@dpc-oracle": true,
+    "frontend-design@claude-plugins-official": true,
+    "lightdash-jp-mis-dwh-content-developer@ubie-plugins": true,
+    "mocks@ubie-plugins": true,
     "slide-banana@ubie-plugins": true,
     "superpowers@claude-plugins-official": true,
     "superpowers@superpowers-dev": false,
     "swift-lsp@claude-plugins-official": false,
     "ubie-basics@ubie-plugins": true,
-    "compact-plus@compact-plus-local": true,
-    "crit@crit": true,
-    "frontend-design@claude-plugins-official": true
+    "sf@ubie-plugins": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
       "source": {
         "source": "github",
         "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "compact-plus-local": {
+      "source": {
+        "source": "github",
+        "repo": "u-ichi/compact-plus"
+      }
+    },
+    "crit": {
+      "source": {
+        "source": "github",
+        "repo": "tomasz-tomczyk/crit"
       }
     },
     "dpc-oracle": {
@@ -310,22 +433,9 @@
         "repo": "ubie-inc/claude-plugins"
       },
       "autoUpdate": true
-    },
-    "compact-plus-local": {
-      "source": {
-        "source": "github",
-        "repo": "u-ichi/compact-plus"
-      }
-    },
-    "crit": {
-      "source": {
-        "source": "github",
-        "repo": "tomasz-tomczyk/crit"
-      }
     }
   },
   "language": "Japanese",
-  "teammateDefaultModel": "sonnet",
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
@@ -444,9 +554,15 @@
   },
   "advisorModel": "fable",
   "tui": "fullscreen",
+  "voice": {
+    "enabled": false,
+    "mode": "hold"
+  },
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark-daltonized",
   "preferredNotifChannel": "terminal_bell",
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true
+  "voiceEnabled": false,
+  "teammateDefaultModel": "sonnet",
+  "model": "claude-fable-5-1[1m]"
 }
