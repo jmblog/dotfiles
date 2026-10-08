@@ -394,7 +394,11 @@
     "superpowers@superpowers-dev": false,
     "swift-lsp@claude-plugins-official": false,
     "ubie-basics@ubie-plugins": true,
-    "sf@ubie-plugins": true
+    "sf@ubie-plugins": true,
+    "fleama@fleama": true,
+    "dpc-monthly-report@fleama": true,
+    "yomiyasu@yomiyasu": true,
+    "cc-plugin-you-should-know@builtin": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -433,6 +437,18 @@
         "repo": "ubie-inc/claude-plugins"
       },
       "autoUpdate": true
+    },
+    "fleama": {
+      "source": {
+        "source": "url",
+        "url": "https://fleama-gw.ubie.dev/marketplace.json"
+      }
+    },
+    "yomiyasu": {
+      "source": {
+        "source": "github",
+        "repo": "nanaism/yomiyasu"
+      }
     }
   },
   "language": "Japanese",
@@ -563,6 +579,5 @@
   "preferredNotifChannel": "terminal_bell",
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": false,
-  "teammateDefaultModel": "sonnet",
-  "model": "claude-fable-5-1[1m]"
+  "teammateDefaultModel": "sonnet"
 }

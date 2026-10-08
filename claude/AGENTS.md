@@ -39,9 +39,11 @@ When working with internationalized UI text, be aware that Japanese uses full-wi
 - 重い推論（設計・複雑デバッグ・戦略/トレードオフ分析）→ deep-reasoner
 - 調査（大量の生データ読み）→ researcher（background）
 - 機械的作業（整形・移動・定型生成・単純編集）→ fast-worker
+  - 結果を機械的に確かめられる作業（ファイルの移動・アーカイブ・リネーム、決まった文字列の置換、スクリプトの実行）は model=haiku（Haiku 5.5）
+  - 日本語の定型文書の生成（作業ログ・PROJECT.md の行など）と、ほかのセッションも編集するファイルの部分編集は model=sonnet（Sonnet 5.5）
 - 読み取り専用のファイル探索・参照引き → scout（background）
 - 委譲時は Agent ツールの model パラメータを必ず明示する
-  （deep-reasoner=opus / researcher=sonnet / fast-worker=sonnet / scout=haiku）。
+  （deep-reasoner=opus / researcher=sonnet / fast-worker=haiku または sonnet（上の区分で選ぶ） / scout=haiku）。
   frontmatter の model 指定が無視されるモードがあるため
 - 委譲は原則 background で起動し、結果待ちの間もユーザーとの対話を継続する
 - fork は「会話文脈の続きが必要な作業」に限定する（fork は親モデルで走り高コスト）
