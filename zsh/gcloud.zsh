@@ -6,6 +6,6 @@ _init_gcloud_sdk() {
   if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 }
 
-gcloud() { _init_gcloud_sdk && command gcloud "$@"; }
-bq() { _init_gcloud_sdk && command bq "$@"; }
-gsutil() { _init_gcloud_sdk && command gsutil "$@"; }
+gcloud() { (( $+functions[_init_gcloud_sdk] )) && _init_gcloud_sdk; command gcloud "$@"; }
+bq() { (( $+functions[_init_gcloud_sdk] )) && _init_gcloud_sdk; command bq "$@"; }
+gsutil() { (( $+functions[_init_gcloud_sdk] )) && _init_gcloud_sdk; command gsutil "$@"; }
